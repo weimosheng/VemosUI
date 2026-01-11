@@ -1,0 +1,142 @@
+<h1>导航栏 (v-navbar)</h1>
+
+<p>v-navbar 是一个导航栏组件，用于展示页面的标题和导航功能。</p>
+
+<h2>基本用法</h2>
+<div class="demo">
+  <v-card title="基本导航栏">
+    <v-navbar title="我的网站"></v-navbar>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-navbar title=&quot;我的网站&quot;></v-navbar>">
+</v-code-display>
+
+<h2>带左右插槽的导航栏</h2>
+<div class="demo">
+  <v-card title="带插槽的导航栏">
+    <v-navbar title="我的网站">
+      <v-button slot="left" type="primary">菜单</v-button>
+      <v-button slot="right" type="default">登录</v-button>
+    </v-navbar>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-navbar title=&quot;我的网站&quot;>
+  <v-button slot=&quot;left&quot; type=&quot;primary&quot;>菜单</v-button>
+  <v-button slot=&quot;right&quot; type=&quot;default&quot;>登录</v-button>
+</v-navbar>">
+</v-code-display>
+
+<h2>固定在顶部的导航栏</h2>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-navbar title=&quot;固定导航&quot; fixed=&quot;true&quot;>
+  <v-button slot=&quot;left&quot; type=&quot;primary&quot;>菜单</v-button>
+  <v-button slot=&quot;right&quot; type=&quot;default&quot;>用户</v-button>
+</v-navbar>">
+</v-code-display>
+
+<h2>多颜色主题</h2>
+<div class="demo">
+  <v-card title="不同主题的导航栏">
+    <v-navbar title="默认主题" theme="default" style="margin-bottom: 10px;">
+      <v-button slot="left" type="primary">菜单</v-button>
+    </v-navbar>
+    <v-navbar title="主要主题" theme="primary" style="margin-bottom: 10px;">
+      <v-button slot="left" type="default">菜单</v-button>
+    </v-navbar>
+    <v-navbar title="成功主题" theme="success" style="margin-bottom: 10px;">
+      <v-button slot="left" type="default">菜单</v-button>
+    </v-navbar>
+    <v-navbar title="警告主题" theme="warning" style="margin-bottom: 10px;">
+      <v-button slot="left" type="default">菜单</v-button>
+    </v-navbar>
+    <v-navbar title="危险主题" theme="danger" style="margin-bottom: 10px;">
+      <v-button slot="left" type="default">菜单</v-button>
+    </v-navbar>
+    <v-navbar title="信息主题" theme="info" style="margin-bottom: 10px;">
+      <v-button slot="left" type="default">菜单</v-button>
+    </v-navbar>
+    <v-navbar title="深色主题" theme="dark" style="margin-bottom: 10px;">
+      <v-button slot="left" type="default">菜单</v-button>
+    </v-navbar>
+    <v-navbar title="浅色主题" theme="light">
+      <v-button slot="left" type="primary">菜单</v-button>
+    </v-navbar>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<!-- 默认主题 -->
+<v-navbar title=&quot;默认主题&quot; theme=&quot;default&quot;>
+  <v-button slot=&quot;left&quot; type=&quot;primary&quot;>菜单</v-button>
+</v-navbar>
+
+<!-- 主题变体 -->
+<v-navbar title=&quot;主要主题&quot; theme=&quot;primary&quot;>
+  <v-button slot=&quot;left&quot; type=&quot;default&quot;>菜单</v-button>
+</v-navbar>
+<v-navbar title=&quot;成功主题&quot; theme=&quot;success&quot;>
+  <v-button slot=&quot;left&quot; type=&quot;default&quot;>菜单</v-button>
+</v-navbar>
+<v-navbar title=&quot;警告主题&quot; theme=&quot;warning&quot;>
+  <v-button slot=&quot;left&quot; type=&quot;default&quot;>菜单</v-button>
+</v-navbar>
+<v-navbar title=&quot;危险主题&quot; theme=&quot;danger&quot;>
+  <v-button slot=&quot;left&quot; type=&quot;default&quot;>菜单</v-button>
+</v-navbar>
+<v-navbar title=&quot;信息主题&quot; theme=&quot;info&quot;>
+  <v-button slot=&quot;left&quot; type=&quot;default&quot;>菜单</v-button>
+</v-navbar>
+<v-navbar title=&quot;深色主题&quot; theme=&quot;dark&quot;>
+  <v-button slot=&quot;left&quot; type=&quot;default&quot;>菜单</v-button>
+</v-navbar>
+<v-navbar title=&quot;浅色主题&quot; theme=&quot;light&quot;></v-navbar>">
+</v-code-display>
+
+<h2>属性</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data='[
+    {"param": "title", "description": "导航栏标题", "type": "String", "values": "-", "default": "VemosUI"},
+    {"param": "fixed", "description": "是否固定在顶部", "type": "Boolean", "values": "true/false", "default": "false"},
+    {"param": "theme", "description": "主题颜色", "type": "String", "values": "default/primary/success/warning/danger/info/dark/light", "default": "default"}
+  ]'
+  columns='[
+    {"prop": "param", "title": "参数", "width": "150px"},
+    {"prop": "description", "title": "说明", "width": "250px"},
+    {"prop": "type", "title": "类型", "width": "150px"},
+    {"prop": "values", "title": "可选值", "width": "250px"},
+    {"prop": "default", "title": "默认值", "width": "150px"}
+  ]'
+></v-table>
+
+<h2>插槽</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data='[
+    {"name": "left", "description": "左侧内容插槽"},
+    {"name": "right", "description": "右侧内容插槽"}
+  ]'
+  columns='[
+    {"prop": "name", "title": "名称", "width": "150px"},
+    {"prop": "description", "title": "说明"}
+  ]'
+></v-table>

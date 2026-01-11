@@ -1,0 +1,65 @@
+<h1>动画效果</h1>
+
+<p>VemosUI 提供了一系列内置的动画效果，可以直接使用。</p>
+
+<h2>基本用法</h2>
+<div class="demo">
+  <v-card title="悬停上浮效果">
+    <div class="vemos-hover-lift" style="padding: 20px; background: #f5f5f5; text-align: center; cursor: pointer;">
+      鼠标悬停我试试
+    </div>
+  </v-card>
+</div>
+
+<h2>脉冲效果</h2>
+<div class="demo">
+  <v-card title="脉冲动画">
+    <div class="vemos-pulse" style="padding: 20px; background: #409eff; color: white; text-align: center; width: 200px;">
+      脉冲动画
+    </div>
+  </v-card>
+</div>
+
+<h2>淡入效果</h2>
+<div class="demo">
+  <v-card title="淡入动画">
+    <div class="vemos-fade" style="padding: 20px; background: #67c23a; color: white; text-align: center;">
+      淡入效果
+    </div>
+  </v-card>
+</div>
+
+<h2>弹跳效果</h2>
+<div class="demo">
+  <v-card title="弹跳动画">
+    <div class="vemos-bounce" style="padding: 20px; background: #e6a23c; color: white; text-align: center; width: 100px; margin: 0 auto;">
+      弹跳
+    </div>
+  </v-card>
+</div>
+
+<h2>加载动画</h2>
+<div class="demo">
+  <v-card title="加载动画">
+    <div style="text-align: center; padding: 20px;">
+      <div class="vemos-loading" style="margin: 0 auto;"></div>
+    </div>
+  </v-card>
+</div>
+
+<h2>动画类名</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data='[
+    {"class": "vemos-hover-lift", "description": "悬停时上浮效果"},
+    {"class": "vemos-pulse", "description": "脉冲效果"},
+    {"class": "vemos-fade", "description": "淡入效果"},
+    {"class": "vemos-bounce", "description": "弹跳效果"},
+    {"class": "vemos-loading", "description": "加载动画"}
+  ]'
+  columns='[
+    {"prop": "class", "title": "类名", "width": "200px"},
+    {"prop": "description", "title": "说明"}
+  ]'
+></v-table>

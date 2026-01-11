@@ -1,0 +1,68 @@
+<h1>开关 (v-switch)</h1>
+
+<p>v-switch 是一个开关组件，用于在两种状态之间切换。</p>
+
+<h2>基本用法</h2>
+<div class="demo">
+  <v-card title="基本开关">
+    <v-switch></v-switch>
+  </v-card>
+</div>
+
+<h2>默认选中状态</h2>
+<div class="demo">
+  <v-card title="默认选中">
+    <v-switch checked="true"></v-switch>
+  </v-card>
+</div>
+
+<h2>禁用状态</h2>
+<div class="demo">
+  <v-card title="禁用的开关">
+    <v-switch checked="true" disabled="true"></v-switch>
+    <v-switch disabled="true"></v-switch>
+  </v-card>
+</div>
+
+<h2>自定义值</h2>
+<div class="demo">
+  <v-card title="自定义激活和非激活值">
+    <div style="margin-bottom: 10px;">
+      <label>激活值为"on"，非激活值为"off"：</label>
+      <v-switch active-value="on" inactive-value="off"></v-switch>
+    </div>
+  </v-card>
+</div>
+
+<h2>属性</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data='[
+    {"param": "checked", "description": "是否选中", "type": "Boolean", "values": "true/false", "default": "false"},
+    {"param": "disabled", "description": "是否禁用", "type": "Boolean", "values": "true/false", "default": "false"},
+    {"param": "active-value", "description": "打开时的值", "type": "Any", "values": "-", "default": "true"},
+    {"param": "inactive-value", "description": "关闭时的值", "type": "Any", "values": "-", "default": "false"}
+  ]'
+  columns='[
+    {"prop": "param", "title": "参数", "width": "180px"},
+    {"prop": "description", "title": "说明", "width": "250px"},
+    {"prop": "type", "title": "类型", "width": "120px"},
+    {"prop": "values", "title": "可选值", "width": "150px"},
+    {"prop": "default", "title": "默认值", "width": "150px"}
+  ]'
+></v-table>
+
+<h2>事件</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data='[
+    {"event": "v-switch-change", "description": "状态改变时触发", "params": "新值"}
+  ]'
+  columns='[
+    {"prop": "event", "title": "事件名", "width": "200px"},
+    {"prop": "description", "title": "说明"},
+    {"prop": "params", "title": "参数"}
+  ]'
+></v-table>

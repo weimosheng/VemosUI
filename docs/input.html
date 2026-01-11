@@ -1,0 +1,110 @@
+<h1>输入框 (v-input)</h1>
+
+<p>v-input 是一个输入框组件，用于接收用户的输入。</p>
+
+<h2>基本用法</h2>
+<div class="demo">
+  <v-card title="基本输入框">
+    <v-input placeholder="请输入内容"></v-input>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-input placeholder=&quot;请输入内容&quot;></v-input>">
+</v-code-display>
+
+<h2>不同类型的输入框</h2>
+<div class="demo">
+  <v-card title="输入框类型">
+    <div style="margin-bottom: 10px;">
+      <label>文本输入框：</label>
+      <v-input type="text" placeholder="请输入文本"></v-input>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <label>密码输入框：</label>
+      <v-input type="password" placeholder="请输入密码"></v-input>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <label>数字输入框：</label>
+      <v-input type="number" placeholder="请输入数字"></v-input>
+    </div>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<!-- 文本输入框 -->
+<v-input type=&quot;text&quot; placeholder=&quot;请输入文本&quot;></v-input>
+
+<!-- 密码输入框 -->
+<v-input type=&quot;password&quot; placeholder=&quot;请输入密码&quot;></v-input>
+
+<!-- 数字输入框 -->
+<v-input type=&quot;number&quot; placeholder=&quot;请输入数字&quot;></v-input>">
+</v-code-display>
+
+<h2>禁用和只读状态</h2>
+<div class="demo">
+  <v-card title="状态示例">
+    <div style="margin-bottom: 10px;">
+      <label>禁用状态：</label>
+      <v-input value="禁用的输入框" disabled></v-input>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <label>只读状态：</label>
+      <v-input value="只读的输入框" readonly></v-input>
+    </div>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<!-- 禁用状态 -->
+<v-input value=&quot;禁用的输入框&quot; disabled></v-input>
+
+<!-- 只读状态 -->
+<v-input value=&quot;只读的输入框&quot; readonly></v-input>">
+</v-code-display>
+
+<h2>属性</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data='[
+    {"param": "type", "description": "输入框类型", "type": "String", "values": "text/password/number等", "default": "text"},
+    {"param": "value", "description": "输入框的值", "type": "String", "values": "-", "default": "''"},
+    {"param": "placeholder", "description": "占位符", "type": "String", "values": "-", "default": "''"},
+    {"param": "disabled", "description": "是否禁用", "type": "Boolean", "values": "true/false", "default": "false"},
+    {"param": "readonly", "description": "是否只读", "type": "Boolean", "values": "true/false", "default": "false"}
+  ]'
+  columns='[
+    {"prop": "param", "title": "参数", "width": "150px"},
+    {"prop": "description", "title": "说明", "width": "250px"},
+    {"prop": "type", "title": "类型", "width": "150px"},
+    {"prop": "values", "title": "可选值", "width": "200px"},
+    {"prop": "default", "title": "默认值", "width": "150px"}
+  ]'
+></v-table>
+
+<h2>事件</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data='[
+    {"event": "v-input-change", "description": "值改变时触发", "params": "新值"},
+    {"event": "v-input-focus", "description": "获得焦点时触发", "params": "-"},
+    {"event": "v-input-blur", "description": "失去焦点时触发", "params": "-"}
+  ]'
+  columns='[
+    {"prop": "event", "title": "事件名", "width": "200px"},
+    {"prop": "description", "title": "说明"},
+    {"prop": "params", "title": "参数"}
+  ]'
+></v-table>

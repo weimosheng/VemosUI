@@ -1,0 +1,75 @@
+<h1>按钮 (v-button)</h1>
+
+<p>v-button 是一个按钮组件，用于触发相应的操作。</p>
+
+<h2>基本用法</h2>
+<div class="demo">
+  <v-card title="按钮类型">
+    <v-button type="default">默认按钮</v-button>
+    <v-button type="primary">主要按钮</v-button>
+    <v-button type="success">成功按钮</v-button>
+    <v-button type="warning">警告按钮</v-button>
+    <v-button type="danger">危险按钮</v-button>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-button type=&quot;default&quot;>默认按钮</v-button>
+<v-button type=&quot;primary&quot;>主要按钮</v-button>
+<v-button type=&quot;success&quot;>成功按钮</v-button>
+<v-button type=&quot;warning&quot;>警告按钮</v-button>
+<v-button type=&quot;danger&quot;>危险按钮</v-button>">
+</v-code-display>
+
+<h2>不同尺寸</h2>
+<div class="demo">
+  <v-card title="按钮尺寸">
+    <v-button size="small">小按钮</v-button>
+    <v-button size="medium">中按钮</v-button>
+    <v-button size="large">大按钮</v-button>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-button size=&quot;small&quot;>小按钮</v-button>
+<v-button size=&quot;medium&quot;>中按钮</v-button>
+<v-button size=&quot;large&quot;>大按钮</v-button>">
+</v-code-display>
+
+<h2>禁用状态</h2>
+<div class="demo">
+  <v-card title="禁用按钮">
+    <v-button type="primary" disabled>禁用按钮</v-button>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-button type=&quot;primary&quot; disabled>禁用按钮</v-button>">
+</v-code-display>
+
+<h2>属性</h2>
+<v-table 
+  border="true"
+  stripe="true",
+  data='[
+    {"param": "type", "description": "按钮类型", "type": "String", "values": "default/primary/success/warning/danger", "default": "default"},
+    {"param": "size", "description": "按钮尺寸", "type": "String", "values": "small/medium/large", "default": "medium"},
+    {"param": "disabled", "description": "是否禁用", "type": "Boolean", "values": "true/false", "default": "false"}
+  ]',
+  columns='[
+    {"prop": "param", "title": "参数", "width": "150px"},
+    {"prop": "description", "title": "说明", "width": "250px"},
+    {"prop": "type", "title": "类型", "width": "150px"},
+    {"prop": "values", "title": "可选值", "width": "250px"},
+    {"prop": "default", "title": "默认值", "width": "150px"}
+  ]'
+></v-table>

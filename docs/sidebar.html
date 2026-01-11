@@ -1,0 +1,116 @@
+<h1>侧边栏 (v-sidebar)</h1>
+
+<p>v-sidebar 是一个侧边栏组件，通常用于页面的导航菜单。</p>
+
+<h2>基本用法</h2>
+<div class="demo">
+  <v-card title="基本侧边栏">
+    <v-sidebar 
+      width="200px"
+      items='[{"text": "首页", "icon": "🏠", "route": "/home"}, {"text": "关于", "icon": "ℹ️", "route": "/about"}, {"text": "联系", "icon": "📞", "route": "/contact"}]'
+    >
+      <div slot="header">我的应用</div>
+    </v-sidebar>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-sidebar 
+  width=&quot;200px&quot;
+  items=&quot;[{&quot;text&quot;: &quot;首页&quot;, &quot;icon&quot;: &quot;🏠&quot;, &quot;route&quot;: &quot;/home&quot;}, {&quot;text&quot;: &quot;关于&quot;, &quot;icon&quot;: &quot;ℹ️&quot;, &quot;route&quot;: &quot;/about&quot;}, {&quot;text&quot;: &quot;联系&quot;, &quot;icon&quot;: &quot;📞&quot;, &quot;route&quot;: &quot;/contact&quot;}]&quot;
+>
+  <div slot=&quot;header&quot;>我的应用</div>
+</v-sidebar>">
+</v-code-display>
+
+<h2>带子菜单的侧边栏</h2>
+<div class="demo">
+  <v-card title="带子菜单的侧边栏">
+    <v-sidebar 
+      width="220px"
+      items='[
+        {"text": "首页", "icon": "🏠", "route": "/home"}, 
+        {"text": "产品", "icon": "📦", "expanded": true, "children": [
+          {"text": "笔记本电脑", "icon": "💻", "route": "/laptops"},
+          {"text": "手机", "icon": "📱", "route": "/phones"},
+          {"text": "配件", "icon": "🔌", "route": "/accessories"}
+        ]},
+        {"text": "关于我们", "icon": "👥", "route": "/about"}
+      ]'
+    >
+      <div slot="header">产品中心</div>
+      <div slot="footer">© 2026 VemosUI</div>
+    </v-sidebar>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-sidebar 
+  width=&quot;220px&quot;
+  items=&quot;[
+    {&quot;text&quot;: &quot;首页&quot;, &quot;icon&quot;: &quot;🏠&quot;, &quot;route&quot;: &quot;/home&quot;}, 
+    {&quot;text&quot;: &quot;产品&quot;, &quot;icon&quot;: &quot;📦&quot;, &quot;expanded&quot;: true, &quot;children&quot;: [
+      {&quot;text&quot;: &quot;笔记本电脑&quot;, &quot;icon&quot;: &quot;💻&quot;, &quot;route&quot;: &quot;/laptops&quot;},
+      {&quot;text&quot;: &quot;手机&quot;, &quot;icon&quot;: &quot;📱&quot;, &quot;route&quot;: &quot;/phones&quot;},
+      {&quot;text&quot;: &quot;配件&quot;, &quot;icon&quot;: &quot;🔌&quot;, &quot;route&quot;: &quot;/accessories&quot;}
+    ]},
+    {&quot;text&quot;: &quot;关于我们&quot;, &quot;icon&quot;: &quot;👥&quot;, &quot;route&quot;: &quot;/about&quot;}
+  ]&quot;
+>
+  <div slot=&quot;header&quot;>产品中心</div>
+  <div slot=&quot;footer&quot;>© 2026 VemosUI</div>
+</v-sidebar>">
+</v-code-display>
+
+<h2>属性</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data='[
+    {"param": "items", "description": "菜单项数组", "type": "Array", "values": "-", "default": "[]"},
+    {"param": "width", "description": "侧边栏宽度", "type": "String", "values": "-", "default": "240px"},
+    {"param": "collapsed", "description": "是否收起", "type": "Boolean", "values": "true/false", "default": "false"}
+  ]'
+  columns='[
+    {"prop": "param", "title": "参数", "width": "150px"},
+    {"prop": "description", "title": "说明", "width": "250px"},
+    {"prop": "type", "title": "类型", "width": "150px"},
+    {"prop": "values", "title": "可选值", "width": "150px"},
+    {"prop": "default", "title": "默认值", "width": "150px"}
+  ]'
+></v-table>
+
+<h2>事件</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data='[
+    {"event": "v-sidebar-item-click", "description": "点击菜单项时触发", "params": "{ index: 菜单项索引 }"},
+    {"event": "v-sidebar-subitem-click", "description": "点击子菜单项时触发", "params": "{ parentIndex: 父菜单索引, index: 子菜单索引 }"}
+  ]'
+  columns='[
+    {"prop": "event", "title": "事件名", "width": "200px"},
+    {"prop": "description", "title": "说明"},
+    {"prop": "params", "title": "参数"}
+  ]'
+></v-table>
+
+<h2>插槽</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data='[
+    {"name": "header", "description": "顶部内容插槽"},
+    {"name": "footer", "description": "底部内容插槽"}
+  ]'
+  columns='[
+    {"prop": "name", "title": "名称", "width": "150px"},
+    {"prop": "description", "title": "说明"}
+  ]'
+></v-table>

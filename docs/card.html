@@ -1,0 +1,54 @@
+<h1>卡片 (v-card)</h1>
+
+<p>v-card 是一个卡片组件，用于展示内容区块。</p>
+
+<h2>基本用法</h2>
+<div class="demo">
+  <v-card title="卡片标题">
+    <p>这是卡片的内容区域。</p>
+    <p>卡片可以包含任意内容。</p>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-card title=&quot;卡片标题&quot;>
+  <p>这是卡片的内容区域。</p>
+  <p>卡片可以包含任意内容。</p>
+</v-card>">
+</v-code-display>
+
+<h2>带页脚的卡片</h2>
+<div class="demo">
+  <v-card title="带页脚的卡片" footer="这是页脚内容">
+    <p>这是卡片的内容区域。</p>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-card title=&quot;带页脚的卡片&quot; footer=&quot;这是页脚内容&quot;>
+  <p>这是卡片的内容区域。</p>
+</v-card>">
+</v-code-display>
+
+<h2>属性</h2>
+<v-table 
+  border="true"
+  stripe="true",
+  data='[
+    {"param": "title", "description": "卡片标题", "type": "String", "values": "-", "default": "-"},
+    {"param": "footer", "description": "卡片页脚", "type": "String", "values": "-", "default": "-"}
+  ]',
+  columns='[
+    {"prop": "param", "title": "参数", "width": "150px"},
+    {"prop": "description", "title": "说明", "width": "250px"},
+    {"prop": "type", "title": "类型", "width": "150px"},
+    {"prop": "values", "title": "可选值", "width": "250px"},
+    {"prop": "default", "title": "默认值", "width": "150px"}
+  ]'
+></v-table>
