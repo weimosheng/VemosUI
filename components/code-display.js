@@ -22,10 +22,20 @@ function registerCodeDisplayComponent() {
         
         let codeToRender = code;
         
-        // 解析slot内容作为代码
+        // 优先使用slot内容作为代码，如果code属性未提供
         if (!codeToRender && this.innerHTML) {
           // 获取slot中的内容作为代码
           codeToRender = this.innerHTML.trim();
+          
+          // 如果代码是通过HTML内容传入的（通常是转义过的），则需要解码
+          if (codeToRender.includes('&lt;') || codeToRender.includes('&gt;')) {
+            codeToRender = codeToRender
+              .replace(/&lt;/g, '<')
+              .replace(/&gt;/g, '>')
+              .replace(/&amp;/g, '&')
+              .replace(/&quot;/g, '"')
+              .replace(/&#039;/g, "'");
+          }
         }
         
         // 转义HTML字符
@@ -54,7 +64,7 @@ function registerCodeDisplayComponent() {
           <div class="v-code-display">
             <div class="v-code-display__header">
               <div class="v-code-display__lang">${lang.toUpperCase()}</div>
-              ${(copyable === '' || copyable === 'true') ? 
+              ${(copyable === '' || copyable === 'true') && copyable !== 'false' ? 
                 `<button class="v-code-display__copy-btn" title="复制代码">
                   <svg class="v-code-display__copy-icon" viewBox="0 0 24 24" width="16" height="16">
                     <path fill="currentColor" d="M19 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5v2H7v14h12v-5h-2v1z"/>

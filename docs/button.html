@@ -3,6 +3,7 @@
 <p>v-button 是一个按钮组件，用于触发相应的操作。</p>
 
 <h2>基本用法</h2>
+<p><small>使用 type 属性来定义按钮的样式，可选值包括 default/primary/success/warning/danger/text</small></p>
 <div class="demo">
   <v-card title="按钮类型">
     <v-button type="default">默认按钮</v-button>
@@ -10,6 +11,7 @@
     <v-button type="success">成功按钮</v-button>
     <v-button type="warning">警告按钮</v-button>
     <v-button type="danger">危险按钮</v-button>
+    <v-button type="text">文本按钮</v-button>
   </v-card>
 </div>
 
@@ -21,10 +23,12 @@
 <v-button type=&quot;primary&quot;>主要按钮</v-button>
 <v-button type=&quot;success&quot;>成功按钮</v-button>
 <v-button type=&quot;warning&quot;>警告按钮</v-button>
-<v-button type=&quot;danger&quot;>危险按钮</v-button>">
+<v-button type=&quot;danger&quot;>危险按钮</v-button>
+<v-button type=&quot;text&quot;>文本按钮</v-button>">
 </v-code-display>
 
 <h2>不同尺寸</h2>
+<p><small>使用 size 属性来定义按钮的尺寸，可选值包括 small/medium/large</small></p>
 <div class="demo">
   <v-card title="按钮尺寸">
     <v-button size="small">小按钮</v-button>
@@ -42,7 +46,77 @@
 <v-button size=&quot;large&quot;>大按钮</v-button>">
 </v-code-display>
 
+<h2>虚线按钮</h2>
+<p><small>使用 dashed 属性来使用虚线按钮。</small></p>
+<div class="demo">
+  <v-card title="虚线按钮">
+    <v-button type="default" dashed>虚线按钮</v-button>
+    <v-button type="primary" dashed>虚线按钮</v-button>
+    <v-button type="success" dashed>虚线按钮</v-button>
+    <v-button type="warning" dashed>虚线按钮</v-button>
+    <v-button type="danger" dashed>虚线按钮</v-button>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-button type=&quot;default&quot; dashed>虚线按钮</v-button>
+<v-button type=&quot;primary&quot; dashed>虚线按钮</v-button>
+<v-button type=&quot;success&quot; dashed>虚线按钮</v-button>
+<v-button type=&quot;warning&quot; dashed>虚线按钮</v-button>
+<v-button type=&quot;danger&quot; dashed>虚线按钮</v-button>">
+</v-code-display>
+
+<h2>带图标的按钮</h2>
+<p><small>使用 icon 属性来添加按钮图标，支持 Font Awesome 图标。</small></p>
+<div class="demo">
+  <v-card title="图标按钮">
+    <v-button icon="fas fa-home">首页</v-button>
+    <v-button icon="fas fa-user" type="primary">用户</v-button>
+    <v-button icon="fas fa-cog" type="success">设置</v-button>
+    <v-button icon="fas fa-check" type="warning">确认</v-button>
+    <v-button icon="fas fa-trash" type="danger">删除</v-button>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-button icon=&quot;fas fa-home&quot;>首页</v-button>
+<v-button icon=&quot;fas fa-user&quot; type=&quot;primary&quot;>用户</v-button>
+<v-button icon=&quot;fas fa-cog&quot; type=&quot;success&quot;>设置</v-button>
+<v-button icon=&quot;fas fa-check&quot; type=&quot;warning&quot;>确认</v-button>
+<v-button icon=&quot;fas fa-trash&quot; type=&quot;danger&quot;>删除</v-button>">
+</v-code-display>
+
+<h2>圆形按钮</h2>
+<p><small>使用 circle 属性来创建圆形按钮，通常与 icon 属性一起使用。</small></p>
+<div class="demo">
+  <v-card title="圆形按钮">
+    <v-button icon="fas fa-home" circle></v-button>
+    <v-button icon="fas fa-user" circle type="primary"></v-button>
+    <v-button icon="fas fa-cog" circle type="success"></v-button>
+    <v-button icon="fas fa-check" circle type="warning"></v-button>
+    <v-button icon="fas fa-trash" circle type="danger"></v-button>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-button icon=&quot;fas fa-home&quot; circle></v-button>
+<v-button icon=&quot;fas fa-user&quot; circle type=&quot;primary&quot;></v-button>
+<v-button icon=&quot;fas fa-cog&quot; circle type=&quot;success&quot;></v-button>
+<v-button icon=&quot;fas fa-check&quot; circle type=&quot;warning&quot;></v-button>
+<v-button icon=&quot;fas fa-trash&quot; circle type=&quot;danger&quot;></v-button>">
+</v-code-display>
+
 <h2>禁用状态</h2>
+<p><small>使用 disabled 属性来禁用按钮，使其不可点击。</small></p>
 <div class="demo">
   <v-card title="禁用按钮">
     <v-button type="primary" disabled>禁用按钮</v-button>
@@ -56,14 +130,38 @@
   code="<v-button type=&quot;primary&quot; disabled>禁用按钮</v-button>">
 </v-code-display>
 
+<h2>自定义颜色</h2>
+<p><small>使用 color 和 background 属性来自定义按钮的颜色。</small></p>
+<div class="demo">
+  <v-card title="自定义按钮颜色">
+    <v-button color="#ff6b6b" background="#ffe0e0">自定义颜色按钮</v-button>
+    <v-button color="#546e7a" background="#f5f5f5">灰色系按钮</v-button>
+    <v-button type="primary" dashed color="#8e44ad">虚线+自定义颜色</v-button>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-button color=&quot;#ff6b6b&quot; background=&quot;#ffe0e0&quot;>自定义颜色按钮</v-button>
+<v-button color=&quot;#546e7a&quot; background=&quot;#f5f5f5&quot;>灰色系按钮</v-button>
+<v-button type=&quot;primary&quot; dashed color=&quot;#8e44ad&quot;>虚线+自定义颜色</v-button>">
+</v-code-display>
+
 <h2>属性</h2>
 <v-table 
   border="true"
   stripe="true",
   data='[
-    {"param": "type", "description": "按钮类型", "type": "String", "values": "default/primary/success/warning/danger", "default": "default"},
+    {"param": "type", "description": "按钮类型", "type": "String", "values": "default/primary/success/warning/danger/text", "default": "default"},
     {"param": "size", "description": "按钮尺寸", "type": "String", "values": "small/medium/large", "default": "medium"},
-    {"param": "disabled", "description": "是否禁用", "type": "Boolean", "values": "true/false", "default": "false"}
+    {"param": "disabled", "description": "是否禁用", "type": "Boolean", "values": "true/false", "default": "false"},
+    {"param": "color", "description": "自定义文字颜色", "type": "String", "values": "有效的CSS颜色值", "default": "-"},
+    {"param": "dashed", "description": "是否为虚线边框", "type": "Boolean", "values": "true/false", "default": "false"},
+    {"param": "background", "description": "自定义背景颜色", "type": "String", "values": "有效的CSS颜色值", "default": "-"},
+    {"param": "icon", "description": "按钮图标", "type": "String", "values": "Font Awesome 图标类名", "default": "-"},
+    {"param": "circle", "description": "是否为圆形按钮", "type": "Boolean", "values": "true/false", "default": "false"}
   ]',
   columns='[
     {"prop": "param", "title": "参数", "width": "150px"},

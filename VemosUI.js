@@ -133,7 +133,24 @@ class VemosUI {
       console.error('您的浏览器不支持Web Components标准，VemosUI无法运行');
       return;
     }
-    // 核心框架初始化完成，不再注册内置组件
+    
+    // 添加Font Awesome图标库
+    this.loadFontAwesome();
+  }
+  
+  /**
+   * 加载Font Awesome图标库
+   */
+  loadFontAwesome() {
+    // 检查是否已存在Font Awesome链接
+    if (document.querySelector('link[href*="fontawesome"]')) {
+      return;
+    }
+    
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+    document.head.appendChild(link);
   }
 }
 

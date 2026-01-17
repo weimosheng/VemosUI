@@ -1,34 +1,11 @@
 <h1>代码展示 (v-code-display)</h1>
 
-<p>v-code-display 是一个用于展示代码片段的组件，支持多种编程语言和代码高亮显示。</p>
+<p>v-code-display 是一个代码高亮展示组件，支持多种编程语言、行号显示和一键复制功能。</p>
 
 <h2>基本用法</h2>
 <div class="demo">
   <v-card title="基本代码展示">
-    <v-code-display
-    lang="html"
-    code="&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;title&gt;Hello World&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h1&gt;Hello World&lt;/h1&gt;
-  &lt;p&gt;这是一个简单的HTML页面&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-    ">
-    </v-code-display>
-  </v-card>
-</div>
-
-<v-code-display 
-  lang="html"
-  show-line-numbers="true"
-  copyable="true"
-  code='&lt;v-code-display 
-  lang=&quot;html&quot;
-  code="
+    <v-code-display lang="html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -38,16 +15,7 @@
   &lt;h1&gt;Hello World&lt;/h1&gt;
   &lt;p&gt;这是一个简单的HTML页面&lt;/p&gt;
 &lt;/body&gt;
-&lt;/html&gt;"&gt;
-&lt;/v-code-display&gt;'>
-</v-code-display>
-
-<h2>使用code属性指定代码</h2>
-<div class="demo">
-  <v-card title="通过属性指定代码">
-    <v-code-display 
-      code='console.log(&quot;Hello, VemosUI!&quot;)&#10;if (true) {&#10;  console.log(&quot;条件为真&quot;);&#10;}' 
-      lang="javascript">
+&lt;/html&gt;
     </v-code-display>
   </v-card>
 </div>
@@ -56,24 +24,31 @@
   lang="html"
   show-line-numbers="true"
   copyable="true"
-  code="&lt;v-code-display 
-  code=&#039;console.log(&quot;Hello, VemosUI!&quot;)&#10;if (true) {&#10;  console.log(&quot;条件为真&quot;);&#10;}&#039; 
-  lang=&quot;javascript&quot;&gt;
-&lt;/v-code-display&gt;">
+  code="<v-code-display lang=&quot;html&quot;>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Hello World&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello World&lt;/h1&gt;
+  &lt;p&gt;这是一个简单的HTML页面&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</v-code-display>">
 </v-code-display>
 
 <h2>显示行号</h2>
 <div class="demo">
   <v-card title="带行号的代码展示">
     <v-code-display 
-      show-line-numbers="true"
-      lang="javascript">
-function fibonacci(n) {
-  if (n <= 1) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
+      lang="javascript" 
+      show-line-numbers="true">
+function greet(name) {
+  return `Hello, ${name}!`;
 }
 
-console.log(fibonacci(10)); // 55
+console.log(greet('World'));
     </v-code-display>
   </v-card>
 </div>
@@ -82,30 +57,30 @@ console.log(fibonacci(10)); // 55
   lang="html"
   show-line-numbers="true"
   copyable="true"
-  code="&lt;v-code-display 
-  show-line-numbers=&quot;true&quot;
-  lang=&quot;javascript&quot;&gt;
-function fibonacci(n) {
-  if (n &lt;= 1) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
+  code="<v-code-display 
+  lang=&quot;javascript&quot; 
+  show-line-numbers=&quot;true&quot;>
+function greet(name) {
+  return `Hello, ${name}!`;
 }
 
-console.log(fibonacci(10)); // 55
-&lt;/v-code-display&gt;">
+console.log(greet('World'));
+</v-code-display>">
 </v-code-display>
 
 <h2>隐藏复制按钮</h2>
 <div class="demo">
-  <v-card title="不带复制按钮的代码展示">
+  <v-card title="不带复制按钮的代码">
     <v-code-display 
-      copyable="false"
-      lang="css">
+      lang="css" 
+      show-line-numbers="true"
+      copyable="false">
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 100vh;
-  background-color: #f0f0f0;
 }
     </v-code-display>
   </v-card>
@@ -115,34 +90,35 @@ console.log(fibonacci(10)); // 55
   lang="html"
   show-line-numbers="true"
   copyable="true"
-  code="&lt;v-code-display 
-  copyable=&quot;false&quot;
-  lang=&quot;css&quot;&gt;
+  code="<v-code-display 
+  lang=&quot;css&quot; 
+  show-line-numbers=&quot;true&quot;
+  copyable=&quot;false&quot;>
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 100vh;
-  background-color: #f0f0f0;
 }
-&lt;/v-code-display&gt;">
+</v-code-display>">
 </v-code-display>
 
 <h2>属性</h2>
 <v-table 
   border="true"
-  stripe="true"
+  stripe="true",
   data='[
-    {"param": "code", "description": "要展示的代码内容", "type": "String", "values": "-", "default": "slot内容"},
-    {"param": "lang", "description": "代码的语言类型", "type": "String", "values": "javascript/html/css/python/java等", "default": "javascript"},
-    {"param": "showLineNumbers", "description": "是否显示行号", "type": "Boolean", "values": "true/false", "default": "false"},
+    {"param": "code", "description": "要展示的代码内容", "type": "String", "values": "任意代码字符串", "default": "-"},
+    {"param": "lang", "description": "代码语言", "type": "String", "values": "javascript/html/css/python等", "default": "javascript"},
+    {"param": "show-line-numbers", "description": "是否显示行号", "type": "Boolean", "values": "true/false", "default": "false"},
     {"param": "copyable", "description": "是否显示复制按钮", "type": "Boolean", "values": "true/false", "default": "true"}
-  ]'
+  ]',
   columns='[
-    {"prop": "param", "title": "参数", "width": "180px"},
+    {"prop": "param", "title": "参数", "width": "150px"},
     {"prop": "description", "title": "说明", "width": "250px"},
-    {"prop": "type", "title": "类型", "width": "120px"},
-    {"prop": "values", "title": "可选值", "width": "200px"},
+    {"prop": "type", "title": "类型", "width": "150px"},
+    {"prop": "values", "title": "可选值", "width": "250px"},
     {"prop": "default", "title": "默认值", "width": "150px"}
   ]'
 ></v-table>

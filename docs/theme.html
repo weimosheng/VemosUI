@@ -1,0 +1,116 @@
+<h1>主题 (Theme)</h1>
+
+<p>VemosUI 支持明亮和暗黑两种主题，并可根据系统偏好设置自动切换。</p>
+
+<h2>主题切换</h2>
+<div class="demo">
+  <v-card title="主题演示">
+    <p>页面右上角的主题切换开关允许您切换明亮/暗黑主题。</p>
+    <p>当前主题：<strong id="current-theme">正在加载...</strong></p>
+  </v-card>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 更新当前主题显示
+    const currentThemeEl = document.getElementById('current-theme');
+    if (window.VemosUI) {
+      const currentTheme = window.VemosUI.getCurrentTheme();
+      currentThemeEl.textContent = 
+        currentTheme === 'dark' ? '暗黑主题' : 
+        currentTheme === 'light' ? '明亮主题' : 
+        '跟随系统';
+    }
+    
+    // 监听主题变化
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addListener(() => {
+      if (!localStorage.getItem('vemos-theme')) {
+        const currentTheme = window.VemosUI.getCurrentTheme();
+        currentThemeEl.textContent = 
+          currentTheme === 'dark' ? '暗黑主题' : 
+          currentTheme === 'light' ? '明亮主题' : 
+          '跟随系统';
+      }
+    });
+    
+    // 监听本地存储变化
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'vemos-theme') {
+        const currentTheme = window.VemosUI.getCurrentTheme();
+        currentThemeEl.textContent = 
+          currentTheme === 'dark' ? '暗黑主题' : 
+          currentTheme === 'light' ? '明亮主题' : 
+          '跟随系统';
+      }
+    });
+  });
+</script>
+
+<h2>主题颜色规范</h2>
+<v-table 
+  border="true"
+  stripe="true",
+  data='[
+    {"type": "default", "light": "#f8f9fa / #212529", "dark": "#212529 / #f8f9fa", "usage": "默认背景/文字颜色"},
+    {"type": "tertiary", "light": "#6c757d / #adb5bd", "dark": "#adb5bd / #6c757d", "usage": "次要颜色"},
+    {"type": "primary", "light": "#007bff / #339af0", "dark": "#339af0 / #007bff", "usage": "主要操作颜色"},
+    {"type": "success", "light": "#28a745 / #40c057", "dark": "#40c057 / #28a745", "usage": "成功状态颜色"},
+    {"type": "info", "light": "#17a2b8 / #22b8cf", "dark": "#22b8cf / #17a2b8", "usage": "信息提示颜色"},
+    {"type": "warning", "light": "#ffc107 / #ffd43b", "dark": "#ffd43b / #ffc107", "usage": "警告状态颜色"},
+    {"type": "error", "light": "#dc3545 / #fa5252", "dark": "#fa5252 / #dc3545", "usage": "错误状态颜色"}
+  ]',
+  columns='[
+    {"prop": "type", "title": "颜色类型", "width": "120px"},
+    {"prop": "light", "title": "明亮主题 (背景/文字)", "width": "200px"},
+    {"prop": "dark", "title": "暗黑主题 (背景/文字)", "width": "200px"},
+    {"prop": "usage", "title": "用途", "width": "200px"}
+  ]'
+></v-table>
+
+<h2>使用方法</h2>
+<v-code-display 
+  lang="javascript"
+  show-line-numbers="true"
+  copyable="true"
+  code="// 切换到暗黑主题
+window.VemosUI.toggleTheme(&quot;dark&quot;);
+
+// 切换到明亮主题
+window.VemosUI.toggleTheme(&quot;light&quot;);
+
+// 设置为跟随系统偏好
+window.VemosUI.toggleTheme(&quot;auto&quot;);
+
+// 获取当前主题
+const currentTheme = window.VemosUI.getCurrentTheme();">
+</v-code-display>
+
+<h2>在组件中使用主题颜色</h2>
+<p>在CSS中使用以下CSS变量来应用主题颜色：</p>
+<v-code-display 
+  lang="css"
+  show-line-numbers="true"
+  copyable="true"
+  code="/* 背景颜色 */
+background-color: var(--vemos-bg-default, #ffffff);
+
+/* 文字颜色 */
+color: var(--vemos-text-default, #000000);
+
+/* 主要颜色 */
+background-color: var(--vemos-bg-primary, #007bff);
+color: var(--vemos-text-primary, #ffffff);
+
+/* 成功颜色 */
+background-color: var(--vemos-bg-success, #28a745);
+color: var(--vemos-text-success, #ffffff);
+
+/* 警告颜色 */
+background-color: var(--vemos-bg-warning, #ffc107);
+color: var(--vemos-text-warning, #000000);
+
+/* 错误颜色 */
+background-color: var(--vemos-bg-error, #dc3545);
+color: var(--vemos-text-error, #ffffff);">
+</v-code-display>

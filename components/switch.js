@@ -122,7 +122,7 @@ function registerSwitchComponent() {
             this.setAttribute('value', newValue);
             
             // 触发自定义change事件
-            this.dispatchEvent(new CustomEvent('v-change', {
+            this.dispatchEvent(new CustomEvent('v-switch-change', {
               detail: { 
                 value: newValue,
                 checked: newValue == activeValue

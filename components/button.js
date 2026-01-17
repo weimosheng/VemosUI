@@ -5,16 +5,55 @@ function registerButtonComponent() {
   if (window.VemosUI) {
     // 注册按钮组件
     window.VemosUI.registerComponent('v-button', {
-      props: ['type', 'size', 'disabled'],
+      props: ['type', 'size', 'disabled', 'dashed', 'color', 'background', 'icon', 'circle'],
       template(props) {
-        const { type = 'default', size = 'medium', disabled = false, children } = props;
+        const { 
+          type = 'default', 
+          size = 'medium', 
+          disabled = false, 
+          dashed = false,
+          color, 
+          background,
+          icon = '',
+          circle = false
+        } = props;
         
+        // 检查dashed属性是否存在（支持布尔属性语法）
+        const isDashed = props.hasOwnProperty('dashed') && 
+                        (dashed === '' || dashed === 'true' || dashed === true);
+                        
+        // 检查circle属性是否存在（支持布尔属性语法）
+        const isCircle = props.hasOwnProperty('circle') && 
+                        (circle === '' || circle === 'true' || circle === true);
+
+        // 如果指定了自定义颜色，应用自定义样式
+        const customStyles = [];
+        if (color) customStyles.push(`color: ${color}`);
+        if (background) customStyles.push(`background-color: ${background}`);
+        const customStyleStr = customStyles.length > 0 ? `style="${customStyles.join('; ')}"` : '';
+        
+        // 根据dashed和circle属性决定边框样式
+        let buttonClass = 'v-button';
+        if (isDashed) buttonClass += ' v-button--dashed';
+        if (isCircle) buttonClass += ' v-button--circle';
+        buttonClass += ` v-button--${type} v-button--${size}`;
+        
+        // 生成图标HTML
+        const iconHtml = icon ? `<i class="${icon} v-button__icon"></i>` : '';
+        
+        // 如果是圆形按钮且没有文字内容，则只显示图标
+        // 否则显示图标和slot内容
+        const contentHtml = isCircle 
+          ? iconHtml
+          : `${iconHtml}<span class="v-button__text"><slot></slot></span>`;
+
         return `
           <button 
-            class="v-button v-button--${type} v-button--${size}" 
+            class="${buttonClass}" 
             ${disabled === '' || disabled === 'true' ? 'disabled' : ''}
+            ${customStyleStr}
           >
-            <span class="v-button__text">${children || '<slot></slot>'}</span>
+            ${contentHtml}
           </button>
         `;
       },
@@ -33,6 +72,11 @@ function registerButtonComponent() {
           overflow: hidden;
           transform: translateZ(0);
           -webkit-transform: translateZ(0);
+          min-height: 32px;
+          min-width: 32px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
         
         .v-button:focus {
@@ -68,6 +112,73 @@ function registerButtonComponent() {
           color: #fff;
         }
         
+        .v-button.v-button--text {
+          background-color: transparent;
+          border: none;
+          color: #606266;
+        }
+        
+        .v-button.v-button--dashed {
+          border-style: dashed;
+          background-color: transparent;
+        }
+        
+        .v-button.v-button--dashed.v-button--default {
+          color: #606266;
+          border-color: #dcdfe6;
+        }
+        
+        .v-button.v-button--dashed.v-button--primary {
+          color: #409eff;
+          border-color: #409eff;
+          background-color: transparent;
+        }
+        
+        .v-button.v-button--dashed.v-button--success {
+          color: #67c23a;
+          border-color: #67c23a;
+          background-color: transparent;
+        }
+        
+        .v-button.v-button--dashed.v-button--warning {
+          color: #e6a23c;
+          border-color: #e6a23c;
+          background-color: transparent;
+        }
+        
+        .v-button.v-button--dashed.v-button--danger {
+          color: #f56c6c;
+          border-color: #f56c6c;
+          background-color: transparent;
+        }
+        
+        .v-button.v-button--dashed.v-button--text {
+          color: #606266;
+          background-color: transparent;
+        }
+        
+        .v-button.v-button--circle {
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          padding: 8px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .v-button.v-button--circle.v-button--small {
+          width: 32px;
+          height: 32px;
+          padding: 6px;
+        }
+        
+        .v-button.v-button--circle.v-button--large {
+          width: 48px;
+          height: 48px;
+          padding: 10px;
+        }
+        
         .v-button.v-button--small {
           padding: 6px 12px;
           font-size: 12px;
@@ -98,6 +209,15 @@ function registerButtonComponent() {
           justify-content: center;
           position: relative;
           z-index: 1;
+        }
+        
+        .v-button__icon {
+          margin-right: 6px;
+          vertical-align: middle;
+        }
+        
+        .v-button--circle .v-button__icon {
+          margin-right: 0;
         }
       `,
       mounted() {
