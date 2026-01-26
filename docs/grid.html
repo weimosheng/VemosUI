@@ -1,4 +1,4 @@
-<h1>栅格组件 (v-container, v-row, v-col)</h1>
+<h1>栅格组件 (v-row, v-col)</h1>
 
 <p>栅格组件是响应式布局的基础，采用 24 栅格系统，支持多端适配、灵活布局和多种对齐方式。</p>
 
@@ -6,40 +6,38 @@
 
 <div class="demo">
   <v-card title="基本栅格系统" subtitle="使用 24 栅格系统，列宽总和为 24。">
-    <v-container>
-      <v-row gutter="16">
-        <v-col span="24">
-          <div class="demo-green-box">span=24 (100%)</div>
-        </v-col>
-        <v-col span="12">
-          <div class="demo-green-box demo-green-light">span=12 (50%)</div>
-        </v-col>
-        <v-col span="12">
-          <div class="demo-green-box">span=12 (50%)</div>
-        </v-col>
-        <v-col span="8">
-          <div class="demo-green-box demo-green-light">span=8 (33.3%)</div>
-        </v-col>
-        <v-col span="8">
-          <div class="demo-green-box">span=8 (33.3%)</div>
-        </v-col>
-        <v-col span="8">
-          <div class="demo-green-box demo-green-light">span=8 (33.3%)</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box">span=6 (25%)</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box demo-green-light">span=6 (25%)</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box">span=6 (25%)</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box demo-green-light">span=6 (25%)</div>
-        </v-col>
-      </v-row>
-    </v-container>
+    <v-row gutter="16">
+      <v-col span="24">
+        <div class="demo-green-box">span=24 (100%)</div>
+      </v-col>
+      <v-col span="12">
+        <div class="demo-green-box demo-green-light">span=12 (50%)</div>
+      </v-col>
+      <v-col span="12">
+        <div class="demo-green-box">span=12 (50%)</div>
+      </v-col>
+      <v-col span="8">
+        <div class="demo-green-box demo-green-light">span=8 (33.3%)</div>
+      </v-col>
+      <v-col span="8">
+        <div class="demo-green-box">span=8 (33.3%)</div>
+      </v-col>
+      <v-col span="8">
+        <div class="demo-green-box demo-green-light">span=8 (33.3%)</div>
+      </v-col>
+      <v-col span="6">
+        <div class="demo-green-box">span=6 (25%)</div>
+      </v-col>
+      <v-col span="6">
+        <div class="demo-green-box demo-green-light">span=6 (25%)</div>
+      </v-col>
+      <v-col span="6">
+        <div class="demo-green-box">span=6 (25%)</div>
+      </v-col>
+      <v-col span="6">
+        <div class="demo-green-box demo-green-light">span=6 (25%)</div>
+      </v-col>
+    </v-row>
   </v-card>
 </div>
 
@@ -47,46 +45,42 @@
   lang="html"
   show-line-numbers="true"
   copyable="true"
-  code='<v-container>
-  <v-row gutter="16">
-    <v-col span="24">span=24 (100%)</v-col>
-    <v-col span="12">span=12 (50%)</v-col>
-    <v-col span="12">span=12 (50%)</v-col>
-    <v-col span="8">span=8 (33.3%)</v-col>
-    <v-col span="8">span=8 (33.3%)</v-col>
-    <v-col span="8">span=8 (33.3%)</v-col>
-    <v-col span="6">span=6 (25%)</v-col>
-    <v-col span="6">span=6 (25%)</v-col>
-    <v-col span="6">span=6 (25%)</v-col>
-    <v-col span="6">span=6 (25%)</v-col>
-  </v-row>
-</v-container>'>
+  code='<v-row gutter="16">
+  <v-col span="24">span=24 (100%)</v-col>
+  <v-col span="12">span=12 (50%)</v-col>
+  <v-col span="12">span=12 (50%)</v-col>
+  <v-col span="8">span=8 (33.3%)</v-col>
+  <v-col span="8">span=8 (33.3%)</v-col>
+  <v-col span="8">span=8 (33.3%)</v-col>
+  <v-col span="6">span=6 (25%)</v-col>
+  <v-col span="6">span=6 (25%)</v-col>
+  <v-col span="6">span=6 (25%)</v-col>
+  <v-col span="6">span=6 (25%)</v-col>
+</v-row>'>
 </v-code-display>
 
 <div class="demo">
   <v-card title="响应式栅格" subtitle="在不同屏幕尺寸下显示不同的列宽，支持 xs/sm/md/lg/xl/xxl 六个断点。">
-    <v-container>
-      <v-row gutter="16">
-        <v-col xs="24" sm="12" md="8" lg="6" xl="4">
-          <div class="demo-green-box">xs:24 sm:12 md:8 lg:6 xl:4</div>
-        </v-col>
-        <v-col xs="24" sm="12" md="8" lg="6" xl="4">
-          <div class="demo-green-box demo-green-light">xs:24 sm:12 md:8 lg:6 xl:4</div>
-        </v-col>
-        <v-col xs="24" sm="12" md="8" lg="6" xl="4">
-          <div class="demo-green-box">xs:24 sm:12 md:8 lg:6 xl:4</div>
-        </v-col>
-        <v-col xs="24" sm="12" md="8" lg="6" xl="4">
-          <div class="demo-green-box demo-green-light">xs:24 sm:12 md:8 lg:6 xl:4</div>
-        </v-col>
-        <v-col xs="24" sm="12" md="8" lg="6" xl="4">
-          <div class="demo-green-box">xs:24 sm:12 md:8 lg:6 xl:4</div>
-        </v-col>
-        <v-col xs="24" sm="12" md="8" lg="6" xl="4">
-          <div class="demo-green-box demo-green-light">xs:24 sm:12 md:8 lg:6 xl:4</div>
-        </v-col>
-      </v-row>
-    </v-container>
+    <v-row gutter="16">
+      <v-col xs="24" sm="12" md="8" lg="6" xl="4" xxl="4">
+        <div class="demo-green-box">xs:24 sm:12 md:8 lg:6 xl:4 xxl:4</div>
+      </v-col>
+      <v-col xs="24" sm="12" md="8" lg="6" xl="4" xxl="4">
+        <div class="demo-green-box demo-green-light">xs:24 sm:12 md:8 lg:6 xl:4 xxl:4</div>
+      </v-col>
+      <v-col xs="24" sm="12" md="8" lg="6" xl="4" xxl="4">
+        <div class="demo-green-box">xs:24 sm:12 md:8 lg:6 xl:4 xxl:4</div>
+      </v-col>
+      <v-col xs="24" sm="12" md="8" lg="6" xl="4" xxl="4">
+        <div class="demo-green-box demo-green-light">xs:24 sm:12 md:8 lg:6 xl:4 xxl:4</div>
+      </v-col>
+      <v-col xs="24" sm="12" md="8" lg="6" xl="4" xxl="4">
+        <div class="demo-green-box">xs:24 sm:12 md:8 lg:6 xl:4 xxl:4</div>
+      </v-col>
+      <v-col xs="24" sm="12" md="8" lg="6" xl="4" xxl="4">
+        <div class="demo-green-box demo-green-light">xs:24 sm:12 md:8 lg:6 xl:4 xxl:4</div>
+      </v-col>
+    </v-row>
   </v-card>
 </div>
 
@@ -94,57 +88,53 @@
   lang="html"
   show-line-numbers="true"
   copyable="true"
-  code='<v-container>
-  <v-row gutter="16">
-    <v-col xs="24" sm="12" md="8" lg="6" xl="4">
-      响应式列
-    </v-col>
-    <v-col xs="24" sm="12" md="8" lg="6" xl="4">
-      响应式列
-    </v-col>
-    <v-col xs="24" sm="12" md="8" lg="6" xl="4">
-      响应式列
-    </v-col>
-    <v-col xs="24" sm="12" md="8" lg="6" xl="4">
-      响应式列
-    </v-col>
-    <v-col xs="24" sm="12" md="8" lg="6" xl="4">
-      响应式列
-    </v-col>
-    <v-col xs="24" sm="12" md="8" lg="6" xl="4">
-      响应式列
-    </v-col>
-  </v-row>
-</v-container>'>
+  code='<v-row gutter="16">
+  <v-col xs="24" sm="12" md="8" lg="6" xl="4" xxl="4">
+    响应式列
+  </v-col>
+  <v-col xs="24" sm="12" md="8" lg="6" xl="4" xxl="4">
+    响应式列
+  </v-col>
+  <v-col xs="24" sm="12" md="8" lg="6" xl="4" xxl="4">
+    响应式列
+  </v-col>
+  <v-col xs="24" sm="12" md="8" lg="6" xl="4" xxl="4">
+    响应式列
+  </v-col>
+  <v-col xs="24" sm="12" md="8" lg="6" xl="4" xxl="4">
+    响应式列
+  </v-col>
+  <v-col xs="24" sm="12" md="8" lg="6" xl="4" xxl="4">
+    响应式列
+  </v-col>
+</v-row>'>
 </v-code-display>
 
 <div class="demo">
   <v-card title="列偏移" subtitle="使用 offset 属性设置列左侧的偏移量。">
-    <v-container>
-      <v-row gutter="16">
-        <v-col span="8">
-          <div class="demo-green-box">span=8</div>
-        </v-col>
-        <v-col span="8" offset="8">
-          <div class="demo-green-box demo-green-light">span=8 offset=8</div>
-        </v-col>
-        <v-col span="6" offset="6">
-          <div class="demo-green-box">span=6 offset=6</div>
-        </v-col>
-        <v-col span="6" offset="6">
-          <div class="demo-green-box demo-green-light">span=6 offset=6</div>
-        </v-col>
-        <v-col span="4">
-          <div class="demo-green-box">span=4</div>
-        </v-col>
-        <v-col span="4" offset="4">
-          <div class="demo-green-box demo-green-light">span=4 offset=4</div>
-        </v-col>
-        <v-col span="4" offset="8">
-          <div class="demo-green-box">span=4 offset=8</div>
-        </v-col>
-      </v-row>
-    </v-container>
+    <v-row gutter="16">
+      <v-col span="8">
+        <div class="demo-green-box">span=8</div>
+      </v-col>
+      <v-col span="8" offset="8">
+        <div class="demo-green-box demo-green-light">span=8 offset=8</div>
+      </v-col>
+      <v-col span="6" offset="6">
+        <div class="demo-green-box">span=6 offset=6</div>
+      </v-col>
+      <v-col span="6" offset="6">
+        <div class="demo-green-box demo-green-light">span=6 offset=6</div>
+      </v-col>
+      <v-col span="4">
+        <div class="demo-green-box">span=4</div>
+      </v-col>
+      <v-col span="4" offset="4">
+        <div class="demo-green-box demo-green-light">span=4 offset=4</div>
+      </v-col>
+      <v-col span="4" offset="8">
+        <div class="demo-green-box">span=4 offset=8</div>
+      </v-col>
+    </v-row>
   </v-card>
 </div>
 
@@ -152,92 +142,89 @@
   lang="html"
   show-line-numbers="true"
   copyable="true"
-  code='<v-container>
-  <v-row gutter="16">
-    <v-col span="8">span=8</v-col>
-    <v-col span="8" offset="8">span=8 offset=8</v-col>
-    <v-col span="6" offset="6">span=6 offset=6</v-col>
-    <v-col span="6" offset="6">span=6 offset=6</v-col>
-    <v-col span="4">span=4</v-col>
-    <v-col span="4" offset="4">span=4 offset=4</v-col>
-    <v-col span="4" offset="8">span=4 offset=8</v-col>
-  </v-row>
-</v-container>'>
+  code='<v-row gutter="16">
+  <v-col span="8">span=8</v-col>
+  <v-col span="8" offset="8">span=8 offset=8</v-col>
+  <v-col span="6" offset="6">span=6 offset=6</v-col>
+  <v-col span="6" offset="6">span=6 offset=6</v-col>
+  <v-col span="4">span=4</v-col>
+  <v-col span="4" offset="4">span=4 offset=4</v-col>
+  <v-col span="4" offset="8">span=4 offset=8</v-col>
+</v-row>'>
 </v-code-display>
 
 <div class="demo">
   <v-card title="对齐方式" subtitle="使用 align 和 justify 属性设置行内项目的对齐方式。">
     <h3 style="margin-bottom: 10px;">垂直对齐 (align)</h3>
-    <v-container>
-      <v-row gutter="16" align="start" style="min-height: 120px;">
-        <v-col span="6">
-          <div class="demo-green-box" style="height: 60px;">顶部对齐</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box demo-green-light" style="height: 80px;">顶部对齐</div>
-        </v-col>
-      </v-row>
-      
-      <v-row gutter="16" align="center" style="min-height: 120px; margin-top: 20px;">
-        <v-col span="6">
-          <div class="demo-green-box" style="height: 60px;">垂直居中</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box demo-green-light" style="height: 80px;">垂直居中</div>
-        </v-col>
-      </v-row>
-      
-      <v-row gutter="16" align="end" style="min-height: 120px; margin-top: 20px;">
-        <v-col span="6">
-          <div class="demo-green-box" style="height: 60px;">底部对齐</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box demo-green-light" style="height: 80px;">底部对齐</div>
-        </v-col>
-      </v-row>
-    </v-container>
+    <v-row gutter="16" align="start" style="min-height: 120px;">
+      <v-col span="6">
+        <div class="demo-green-box" style="height: 60px;">顶部对齐</div>
+      </v-col>
+      <v-col span="6">
+        <div class="demo-green-box demo-green-light" style="height: 80px;">顶部对齐</div>
+      </v-col>
+    </v-row>
     
-    <h3 style="margin: 30px 0 10px 0;">水平对齐 (justify)</h3>
-    <v-container>
-      <v-row gutter="16" justify="start">
-        <v-col span="4">
-          <div class="demo-green-box">左对齐</div>
-        </v-col>
-        <v-col span="4">
-          <div class="demo-green-box demo-green-light">左对齐</div>
-        </v-col>
-      </v-row>
-      
-      <v-row gutter="16" justify="center" style="margin-top: 20px;">
-        <v-col span="4">
-          <div class="demo-green-box">居中对齐</div>
-        </v-col>
-        <v-col span="4">
-          <div class="demo-green-box demo-green-light">居中对齐</div>
-        </v-col>
-      </v-row>
-      
-      <v-row gutter="16" justify="end" style="margin-top: 20px;">
-        <v-col span="4">
-          <div class="demo-green-box">右对齐</div>
-        </v-col>
-        <v-col span="4">
-          <div class="demo-green-box demo-green-light">右对齐</div>
-        </v-col>
-      </v-row>
-      
-      <v-row gutter="16" justify="space-between" style="margin-top: 20px;">
-        <v-col span="4">
-          <div class="demo-green-box">两端对齐</div>
-        </v-col>
-        <v-col span="4">
-          <div class="demo-green-box demo-green-light">两端对齐</div>
-        </v-col>
-        <v-col span="4">
-          <div class="demo-green-box">两端对齐</div>
-        </v-col>
-      </v-row>
-    </v-container>
+    <v-row gutter="16" align="center" style="min-height: 120px; margin-top: 20px;">
+      <v-col span="6">
+        <div class="demo-green-box" style="height: 60px;">垂直居中</div>
+      </v-col>
+      <v-col span="6">
+        <div class="demo-green-box demo-green-light" style="height: 80px;">垂直居中</div>
+      </v-col>
+    </v-row>
+    
+    <v-row gutter="16" align="end" style="min-height: 120px; margin-top: 20px;">
+      <v-col span="6">
+        <div class="demo-green-box" style="height: 60px;">底部对齐</div>
+      </v-col>
+      <v-col span="6">
+        <div class="demo-green-box demo-green-light" style="height: 80px;">底部对齐</div>
+      </v-col>
+    </v-row>
+  </v-card>
+</div>
+
+<div class="demo">
+  <v-card title="水平对齐 (justify)" subtitle="使用 justify 属性设置水平对齐方式">
+    <v-row gutter="16" justify="start">
+      <v-col span="4">
+        <div class="demo-green-box">左对齐</div>
+      </v-col>
+      <v-col span="4">
+        <div class="demo-green-box demo-green-light">左对齐</div>
+      </v-col>
+    </v-row>
+    
+    <v-row gutter="16" justify="center" style="margin-top: 20px;">
+      <v-col span="4">
+        <div class="demo-green-box">居中对齐</div>
+      </v-col>
+      <v-col span="4">
+        <div class="demo-green-box demo-green-light">居中对齐</div>
+      </v-col>
+    </v-row>
+    
+    <v-row gutter="16" justify="end" style="margin-top: 20px;">
+      <v-col span="4">
+        <div class="demo-green-box">右对齐</div>
+      </v-col>
+      <v-col span="4">
+        <div class="demo-green-box demo-green-light">右对齐</div>
+      </v-col>
+    </v-row>
+    
+    <v-row gutter="16" justify="space-between" style="margin-top: 20px;">
+      <v-col span="4">
+        <div class="demo-green-box">两端对齐</div>
+      </v-col>
+      <v-col span="4">
+        <div class="demo-green-box demo-green-light">两端对齐</div>
+      </v-col>
+      <v-col span="4">
+        <div class="demo-green-box">两端对齐</div>
+      </v-col>
+    </v-row>
   </v-card>
 </div>
 
@@ -258,53 +245,94 @@
 </v-code-display>
 
 <div class="demo">
-  <v-card title="间距控制" subtitle="使用 gutter 属性控制行和列之间的间距。支持单值和双值格式。">
-    <v-container>
-      <v-row gutter="8">
-        <v-col span="6">
-          <div class="demo-green-box">gutter=8</div>
+  <v-card title="间距控制" subtitle="使用 gutter 属性控制行和列之间的间距。支持单值和数组格式。">
+    <v-card subtitle="水平间距对比 (gutter=8 vs gutter=24)">
+      <v-row>
+        <v-col span="12">
+          <v-card subtitle="gutter=8">
+            <v-row gutter="8">
+              <v-col span="6">
+                <div class="demo-green-box">Col 1</div>
+              </v-col>
+              <v-col span="6">
+                <div class="demo-green-box demo-green-light">Col 2</div>
+              </v-col>
+              <v-col span="6">
+                <div class="demo-green-box">Col 3</div>
+              </v-col>
+              <v-col span="6">
+                <div class="demo-green-box demo-green-light">Col 4</div>
+              </v-col>
+            </v-row>
+          </v-card>
         </v-col>
-        <v-col span="6">
-          <div class="demo-green-box demo-green-light">gutter=8</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box">gutter=8</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box demo-green-light">gutter=8</div>
-        </v-col>
-      </v-row>
-      
-      <v-row gutter="16,8" style="margin-top: 20px;">
-        <v-col span="6">
-          <div class="demo-green-box">gutter="16,8"</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box demo-green-light">gutter="16,8"</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box">gutter="16,8"</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box demo-green-light">gutter="16,8"</div>
-        </v-col>
-      </v-row>
-      
-      <v-row gutter="24" style="margin-top: 20px;">
-        <v-col span="6">
-          <div class="demo-green-box">gutter=24</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box demo-green-light">gutter=24</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box">gutter=24</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box demo-green-light">gutter=24</div>
+        <v-col span="12">
+          <v-card subtitle="gutter=24">
+            <v-row gutter="24">
+              <v-col span="6">
+                <div class="demo-green-box">Col 1</div>
+              </v-col>
+              <v-col span="6">
+                <div class="demo-green-box demo-green-light">Col 2</div>
+              </v-col>
+              <v-col span="6">
+                <div class="demo-green-box">Col 3</div>
+              </v-col>
+              <v-col span="6">
+                <div class="demo-green-box demo-green-light">Col 4</div>
+              </v-col>
+            </v-row>
+          </v-card>
         </v-col>
       </v-row>
-    </v-container>
+    </v-card>
+    
+    <div style="height: 20px;"></div>
+    
+    <v-card subtitle="垂直间距展示 (gutter=[0, 16])">
+      <v-row gutter="[0, 16]">
+        <v-col span="24">
+          <div class="demo-green-box">Row 1 (垂直间距16px)</div>
+        </v-col>
+        <v-col span="24">
+          <div class="demo-green-box demo-green-light">Row 2 (垂直间距16px)</div>
+        </v-col>
+        <v-col span="24">
+          <div class="demo-green-box">Row 3 (垂直间距16px)</div>
+        </v-col>
+      </v-row>
+    </v-card>
+    
+    <div style="height: 20px;"></div>
+    
+    <v-card subtitle="水平+垂直间距组合 (gutter=[16, 8])">
+      <v-row gutter="[16, 8]">
+        <v-col span="6">
+          <div class="demo-green-box">H:16px, V:8px</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light">H:16px, V:8px</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box">H:16px, V:8px</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light">H:16px, V:8px</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box">H:16px, V:8px</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light">H:16px, V:8px</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box">H:16px, V:8px</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light">H:16px, V:8px</div>
+        </v-col>
+      </v-row>
+    </v-card>
   </v-card>
 </div>
 
@@ -312,91 +340,53 @@
   lang="html"
   show-line-numbers="true"
   copyable="true"
-  code='<v-container>
+  code='<!-- 水平间距对比 -->
+<v-card subtitle="gutter=8">
   <v-row gutter="8">
-    <v-col span="6">gutter=8</v-col>
-    <v-col span="6">gutter=8</v-col>
-    <v-col span="6">gutter=8</v-col>
-    <v-col span="6">gutter=8</v-col>
+    <v-col span="6">Col 1</v-col>
+    <v-col span="6">Col 2</v-col>
+    <v-col span="6">Col 3</v-col>
+    <v-col span="6">Col 4</v-col>
   </v-row>
-  
-  <v-row gutter="16,8">
-    <v-col span="6">gutter="16,8" (行间距:16px, 列间距:8px)</v-col>
-    <v-col span="6">gutter="16,8"</v-col>
-    <v-col span="6">gutter="16,8"</v-col>
-    <v-col span="6">gutter="16,8"</v-col>
-  </v-row>
-  
+</v-card>
+
+<v-card subtitle="gutter=24">
   <v-row gutter="24">
-    <v-col span="6">gutter=24</v-col>
-    <v-col span="6">gutter=24</v-col>
-    <v-col span="6">gutter=24</v-col>
-    <v-col span="6">gutter=24</v-col>
+    <v-col span="6">Col 1</v-col>
+    <v-col span="6">Col 2</v-col>
+    <v-col span="6">Col 3</v-col>
+    <v-col span="6">Col 4</v-col>
   </v-row>
-</v-container>'>
+</v-card>
+
+<!-- 垂直间距展示 -->
+<v-row gutter="[0, 16]">
+  <v-col span="24">Row 1 (垂直间距16px)</v-col>
+  <v-col span="24">Row 2 (垂直间距16px)</v-col>
+  <v-col span="24">Row 3 (垂直间距16px)</v-col>
+</v-row>
+
+<!-- 水平+垂直间距组合 -->
+<v-row gutter="[16, 8]">
+  <v-col span="6">H:16px, V:8px</v-col>
+  <v-col span="6">H:16px, V:8px</v-col>
+  <v-col span="6">H:16px, V:8px</v-col>
+  <v-col span="6">H:16px, V:8px</v-col>
+  <v-col span="6">H:16px, V:8px</v-col>
+  <v-col span="6">H:16px, V:8px</v-col>
+  <v-col span="6">H:16px, V:8px</v-col>
+  <v-col span="6">H:16px, V:8px</v-col>
+</v-row>'>
 </v-code-display>
-
-<div class="demo">
-  <v-card title="流体容器" subtitle="使用 fluid 属性使容器宽度为 100%。">
-    <v-container fluid>
-      <v-row gutter="16">
-        <v-col span="6">
-          <div class="demo-green-box">流体容器</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box demo-green-light">流体容器</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box">流体容器</div>
-        </v-col>
-        <v-col span="6">
-          <div class="demo-green-box demo-green-light">流体容器</div>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-card>
-</div>
-
-<v-code-display 
-  lang="html"
-  show-line-numbers="true"
-  copyable="true"
-  code='<v-container fluid>
-  <v-row gutter="16">
-    <v-col span="6">流体容器</v-col>
-    <v-col span="6">流体容器</v-col>
-    <v-col span="6">流体容器</v-col>
-    <v-col span="6">流体容器</v-col>
-  </v-row>
-</v-container>'>
-</v-code-display>
-
-<h2>容器属性</h2>
-<v-table 
-  border="true"
-  stripe="true"
-  data='[
-    {"param": "fluid", "description": "是否流体容器", "type": "Boolean", "values": "true/false", "default": "false"},
-    {"param": "max-width", "description": "容器最大宽度", "type": "String", "values": "有效的CSS宽度值", "default": "-"}
-  ]'
-  columns='[
-    {"prop": "param", "title": "参数", "width": "150px"},
-    {"prop": "description", "title": "说明", "width": "250px"},
-    {"prop": "type", "title": "类型", "width": "150px"},
-    {"prop": "values", "title": "可选值", "width": "250px"},
-    {"prop": "default", "title": "默认值", "width": "150px"}
-  ]'
-></v-table>
 
 <h2>行属性</h2>
 <v-table 
   border="true"
   stripe="true"
   data='[
-    {"param": "gutter", "description": "间距，支持单值或双值（行间距,列间距）", "type": "String", "values": "如：16 或 16,8", "default": "0"},
-    {"param": "align", "description": "垂直对齐方式", "type": "String", "values": "start/center/end/stretch", "default": "stretch"},
-    {"param": "justify", "description": "水平对齐方式", "type": "String", "values": "start/center/end/space-between/space-around/space-evenly", "default": "start"},
-    {"param": "wrap", "description": "是否换行", "type": "String", "values": "wrap/nowrap/wrap-reverse", "default": "wrap"}
+    {"param": "gutter", "description": "间距，支持单值或数组格式（[水平间距, 垂直间距]）", "type": "String", "values": "如：16 或 [16,8]", "default": "0"},
+    {"param": "align", "description": "垂直对齐方式", "type": "String", "values": "top/middle/bottom", "default": "stretch"},
+    {"param": "justify", "description": "水平对齐方式", "type": "String", "values": "start/end/center/space-around/space-between/space-evenly", "default": "start"}
   ]'
   columns='[
     {"prop": "param", "title": "参数", "width": "150px"},
@@ -414,25 +404,12 @@
   data='[
     {"param": "span", "description": "栅格占位格数", "type": "Number", "values": "1-24", "default": "-"},
     {"param": "offset", "description": "栅格左侧的间隔格数", "type": "Number", "values": "0-23", "default": "0"},
-    {"param": "order", "description": "栅格顺序", "type": "Number", "values": "-5到7的整数", "default": "0"},
     {"param": "xs", "description": "<576px 响应式栅格", "type": "Number", "values": "1-24", "default": "-"},
     {"param": "sm", "description": "≥576px 响应式栅格", "type": "Number", "values": "1-24", "default": "-"},
     {"param": "md", "description": "≥768px 响应式栅格", "type": "Number", "values": "1-24", "default": "-"},
     {"param": "lg", "description": "≥992px 响应式栅格", "type": "Number", "values": "1-24", "default": "-"},
     {"param": "xl", "description": "≥1200px 响应式栅格", "type": "Number", "values": "1-24", "default": "-"},
-    {"param": "xxl", "description": "≥1400px 响应式栅格", "type": "Number", "values": "1-24", "default": "-"},
-    {"param": "xs-offset", "description": "<576px 响应式偏移", "type": "Number", "values": "0-23", "default": "0"},
-    {"param": "sm-offset", "description": "≥576px 响应式偏移", "type": "Number", "values": "0-23", "default": "0"},
-    {"param": "md-offset", "description": "≥768px 响应式偏移", "type": "Number", "values": "0-23", "default": "0"},
-    {"param": "lg-offset", "description": "≥992px 响应式偏移", "type": "Number", "values": "0-23", "default": "0"},
-    {"param": "xl-offset", "description": "≥1200px 响应式偏移", "type": "Number", "values": "0-23", "default": "0"},
-    {"param": "xxl-offset", "description": "≥1400px 响应式偏移", "type": "Number", "values": "0-23", "default": "0"},
-    {"param": "xs-order", "description": "<576px 响应式顺序", "type": "Number", "values": "-5到7的整数", "default": "0"},
-    {"param": "sm-order", "description": "≥576px 响应式顺序", "type": "Number", "values": "-5到7的整数", "default": "0"},
-    {"param": "md-order", "description": "≥768px 响应式顺序", "type": "Number", "values": "-5到7的整数", "default": "0"},
-    {"param": "lg-order", "description": "≥992px 响应式顺序", "type": "Number", "values": "-5到7的整数", "default": "0"},
-    {"param": "xl-order", "description": "≥1200px 响应式顺序", "type": "Number", "values": "-5到7的整数", "default": "0"},
-    {"param": "xxl-order", "description": "≥1400px 响应式顺序", "type": "Number", "values": "-5到7的整数", "default": "0"}
+    {"param": "xxl", "description": "≥1600px 响应式栅格", "type": "Number", "values": "1-24", "default": "-"}
   ]'
   columns='[
     {"prop": "param", "title": "参数", "width": "150px"},
@@ -453,7 +430,7 @@
     {"breakpoint": "md", "description": "中等屏幕", "min-width": "≥768px", "典型设备": "小桌面"},
     {"breakpoint": "lg", "description": "大屏幕", "min-width": "≥992px", "典型设备": "桌面"},
     {"breakpoint": "xl", "description": "超大屏幕", "min-width": "≥1200px", "典型设备": "大桌面"},
-    {"breakpoint": "xxl", "description": "超超大屏幕", "min-width": "≥1400px", "典型设备": "超大桌面"}
+    {"breakpoint": "xxl", "description": "超超大屏幕", "min-width": "≥1600px", "典型设备": "超大桌面"}
   ]'
   columns='[
     {"prop": "breakpoint", "title": "断点", "width": "100px"},

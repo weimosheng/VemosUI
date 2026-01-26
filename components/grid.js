@@ -17,13 +17,37 @@ vemos.registerComponent('v-row', {
       flex-wrap: wrap;
       box-sizing: border-box;
       /* 通过负 Margin 抵消 Column 的 Padding */
-      margin-left: calc(var(--row-gutter) / -2);
-      margin-right: calc(var(--row-gutter) / -2);
+      margin-left: calc(var(--row-gutter-h) / -2);
+      margin-right: calc(var(--row-gutter-h) / -2);
+      margin-top: calc(var(--row-gutter-v) / -2);
+      margin-bottom: calc(var(--row-gutter-v) / -2);
     }
   `,
 
   template(props) {
-    const gutter = props.gutter ? parseInt(props.gutter, 10) : 0;
+    let gutterH = 0;  // 水平间距
+    let gutterV = 0;  // 垂直间距
+    
+    // 解析gutter属性，支持两种格式：数字（如"12"）或数组（如"[12, 8]"）
+    if (props.gutter) {
+      try {
+        // 尝试解析为数组格式 "[12, 8]"
+        const parsedGutter = JSON.parse(props.gutter.replace(/'/g, '"'));
+        if (Array.isArray(parsedGutter)) {
+          // 数组格式 [水平间距, 垂直间距]
+          gutterH = parseInt(parsedGutter[0], 10) || 0;
+          gutterV = parseInt(parsedGutter[1], 10) || gutterH; // 如果未指定垂直间距，则使用水平间距
+        } else {
+          // 普通数字格式
+          gutterH = parseInt(props.gutter, 10) || 0;
+          gutterV = gutterH;
+        }
+      } catch (e) {
+        // 如果解析失败，尝试作为普通字符串处理
+        gutterH = parseInt(props.gutter, 10) || 0;
+        gutterV = gutterH;
+      }
+    }
     
     // 映射 flex 属性
     const justifyMap = {
@@ -48,7 +72,8 @@ vemos.registerComponent('v-row', {
     return `
       <style>
         :host {
-          --row-gutter: ${gutter}px;
+          --row-gutter-h: ${gutterH}px;
+          --row-gutter-v: ${gutterV}px;
         }
         .v-row-container {
           justify-content: ${justifyContent};
@@ -74,8 +99,10 @@ vemos.registerComponent('v-col', {
       display: block;
       box-sizing: border-box;
       /* 读取父级 Row 设置的变量 */
-      padding-left: calc(var(--row-gutter) / 2);
-      padding-right: calc(var(--row-gutter) / 2);
+      padding-left: calc(var(--row-gutter-h) / 2);
+      padding-right: calc(var(--row-gutter-h) / 2);
+      padding-top: calc(var(--row-gutter-v) / 2);
+      padding-bottom: calc(var(--row-gutter-v) / 2);
       /* 默认占满一行 */
       width: 100%;
       flex: 0 0 100%;

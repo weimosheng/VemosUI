@@ -1,4 +1,4 @@
-<h1>新栅格组件 (v-grid-container, v-grid-item, v-gi)</h1>
+<h1>新栅格组件 (v-grid, v-grid-item, v-gi)</h1>
 
 <p>基于 CSS Grid 的栅格系统，提供了更灵活和强大的网格布局能力。相比传统的 Flexbox 布局，Grid 布局更适合二维布局需求，可以更好地控制行列位置和大小。v-grid-item 可以简写为 v-gi。</p>
 
@@ -6,7 +6,7 @@
 
 <div class="demo">
   <v-card title="基本栅格系统" subtitle="使用 12 列的网格系统，可自定义列数，v-grid-item 可以简写为 v-gi。">
-    <v-grid-container columns="12" gap="16px">
+    <v-grid cols="12" gap="16px">
       <v-gi span="12">
         <div class="demo-blue-box">span=12 (100%)</div>
       </v-gi>
@@ -25,7 +25,7 @@
       <v-gi span="4">
         <div class="demo-blue-box demo-blue-light">span=4 (33.3%)</div>
       </v-gi>
-    </v-grid-container>
+    </v-grid>
   </v-card>
 </div>
 
@@ -33,179 +33,67 @@
   lang="html"
   show-line-numbers="true"
   copyable="true"
-  code='<v-grid-container columns="12" gap="16px">
+  code='<v-grid cols="12" gap="16px">
   <v-gi span="12">span=12 (100%)</v-gi>
   <v-gi span="6">span=6 (50%)</v-gi>
   <v-gi span="6">span=6 (50%)</v-gi>
   <v-gi span="4">span=4 (33.3%)</v-gi>
   <v-gi span="4">span=4 (33.3%)</v-gi>
   <v-gi span="4">span=4 (33.3%)</v-gi>
-</v-grid-container>'>
+</v-grid>'>
 </v-code-display>
 
-<div class="demo">
-  <v-card title="自定义列数" subtitle="使用 columns 属性自定义网格列数，默认为 12 列。">
-    <v-grid-container columns="6" gap="16px">
-      <v-grid-item span="6">
-        <div class="demo-blue-box">span=6 (100%)</div>
-      </v-grid-item>
-      <v-grid-item span="3">
-        <div class="demo-blue-box demo-blue-light">span=3 (50%)</div>
-      </v-grid-item>
-      <v-grid-item span="3">
-        <div class="demo-blue-box">span=3 (50%)</div>
-      </v-grid-item>
-      <v-grid-item span="2">
-        <div class="demo-blue-box demo-blue-light">span=2 (33.3%)</div>
-      </v-grid-item>
-      <v-grid-item span="2">
-        <div class="demo-blue-box">span=2 (33.3%)</div>
-      </v-grid-item>
-      <v-grid-item span="2">
-        <div class="demo-blue-box demo-blue-light">span=2 (33.3%)</div>
-      </v-grid-item>
-    </v-grid-container>
-  </v-card>
-</div>
+<h2>API 属性表</h2>
 
-<v-code-display 
-  lang="html"
-  show-line-numbers="true"
-  copyable="true"
-  code='<v-grid-container columns="6" gap="16px">
-  <v-grid-item span="6">span=6 (100%)</v-grid-item>
-  <v-grid-item span="3">span=3 (50%)</v-grid-item>
-  <v-grid-item span="3">span=3 (50%)</v-grid-item>
-  <v-grid-item span="2">span=2 (33.3%)</v-grid-item>
-  <v-grid-item span="2">span=2 (33.3%)</v-grid-item>
-  <v-grid-item span="2">span=2 (33.3%)</v-grid-item>
-</v-grid-container>'>
-</v-code-display>
-
-<div class="demo">
-  <v-card title="网格偏移" subtitle="使用 offset 属性设置网格项左侧的偏移量。">
-    <v-grid-container columns="12" gap="16px">
-      <v-grid-item span="8">
-        <div class="demo-blue-box">span=8</div>
-      </v-grid-item>
-      <v-grid-item span="8" offset="4">
-        <div class="demo-blue-box demo-blue-light">span=8 offset=4</div>
-      </v-grid-item>
-      <v-grid-item span="6" offset="3">
-        <div class="demo-blue-box">span=6 offset=3</div>
-      </v-grid-item>
-      <v-grid-item span="6" offset="3">
-        <div class="demo-blue-box demo-blue-light">span=6 offset=3</div>
-      </v-grid-item>
-      <v-grid-item span="4">
-        <div class="demo-blue-box">span=4</div>
-      </v-grid-item>
-      <v-grid-item span="4" offset="4">
-        <div class="demo-blue-box demo-blue-light">span=4 offset=4</div>
-      </v-grid-item>
-      <v-grid-item span="4" offset="4">
-        <div class="demo-blue-box">span=4 offset=4</div>
-      </v-grid-item>
-    </v-grid-container>
-  </v-card>
-</div>
-
-<v-code-display 
-  lang="html"
-  show-line-numbers="true"
-  copyable="true"
-  code='<v-grid-container columns="12" gap="16px">
-  <v-grid-item span="8">span=8</v-grid-item>
-  <v-grid-item span="8" offset="4">span=8 offset=4</v-grid-item>
-  <v-grid-item span="6" offset="3">span=6 offset=3</v-grid-item>
-  <v-grid-item span="6" offset="3">span=6 offset=3</v-grid-item>
-  <v-grid-item span="4">span=4</v-grid-item>
-  <v-grid-item span="4" offset="4">span=4 offset=4</v-grid-item>
-  <v-grid-item span="4" offset="4">span=4 offset=4</v-grid-item>
-</v-grid-container>'>
-</v-code-display>
-
-<div class="demo">
-  <v-card title="响应式网格" subtitle="在不同屏幕尺寸下显示不同的网格配置，支持 xs/sm/md/lg/xl/xxl 六个断点。">
-    <v-grid-container responsive="true" columns="12" gap="16px">
-      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
-        <div class="demo-blue-box">xs:6 sm:4 md:3 lg:2</div>
-      </v-grid-item>
-      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
-        <div class="demo-blue-box demo-blue-light">xs:6 sm:4 md:3 lg:2</div>
-      </v-grid-item>
-      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
-        <div class="demo-blue-box">xs:6 sm:4 md:3 lg:2</div>
-      </v-grid-item>
-      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
-        <div class="demo-blue-box demo-blue-light">xs:6 sm:4 md:3 lg:2</div>
-      </v-grid-item>
-      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
-        <div class="demo-blue-box">xs:6 sm:4 md:3 lg:2</div>
-      </v-grid-item>
-      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
-        <div class="demo-blue-box demo-blue-light">xs:6 sm:4 md:3 lg:2</div>
-      </v-grid-item>
-    </v-grid-container>
-  </v-card>
-</div>
-
-<v-code-display 
-  lang="html"
-  show-line-numbers="true"
-  copyable="true"
-  code='<v-grid-container responsive="true" columns="12" gap="16px">
-  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
-  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
-  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
-  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
-  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
-  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
-</v-grid-container>'>
-</v-code-display>
-
-<div class="demo">
-  <v-card title="响应式偏移" subtitle="在不同屏幕尺寸下使用不同的偏移量，格式为 "span,offset"。">
-    <v-grid-container columns="12" gap="16px">
-      <v-grid-item span="6" md="8,2" lg="6,3">
-        <div class="demo-blue-box">md:8,2 lg:6,3</div>
-      </v-grid-item>
-      <v-grid-item span="4" offset="2" md="4,2" lg="3,3">
-        <div class="demo-blue-box demo-blue-light">md:4,2 lg:3,3</div>
-      </v-grid-item>
-    </v-grid-container>
-  </v-card>
-</div>
-
-<v-code-display 
-  lang="html"
-  show-line-numbers="true"
-  copyable="true"
-  code='<v-grid-container columns="12" gap="16px">
-  <v-grid-item span="6" md="8,2" lg="6,3">md:8,2 lg:6,3</v-grid-item>
-  <v-grid-item span="4" offset="2" md="4,2" lg="3,3">md:4,2 lg:3,3</v-grid-item>
-</v-grid-container>'>
-</v-code-display>
-
-<h2>v-grid-container 属性</h2>
+<h3>v-grid 属性</h3>
 <v-table 
   border="true"
   stripe="true"
   data="[{
     &quot;param&quot;: &quot;columns&quot;,
-    &quot;description&quot;: &quot;网格列数&quot;,
+    &quot;description&quot;: &quot;网格列数，cols 是该属性的缩写形式&quot;,
     &quot;type&quot;: &quot;Number&quot;,
     &quot;values&quot;: &quot;正整数&quot;,
     &quot;default&quot;: &quot;12&quot;
   }, {
-    &quot;param&quot;: &quot;gap&quot;,
-    &quot;description&quot;: &quot;网格间距&quot;,
+    &quot;param&quot;: &quot;cols&quot;,
+    &quot;description&quot;: &quot;网格列数，columns 的缩写形式，支持响应式语法如 '2 400:4 600:6'&quot;,
     &quot;type&quot;: &quot;String&quot;,
-    &quot;values&quot;: &quot;有效的CSS长度值&quot;,
+    &quot;values&quot;: &quot;数字或响应式语法&quot;,
+    &quot;default&quot;: &quot;12&quot;
+  }, {
+    &quot;param&quot;: &quot;gap&quot;,
+    &quot;description&quot;: &quot;网格间距，支持单个值或 [水平间距, 垂直间距] 数组格式&quot;,
+    &quot;type&quot;: &quot;String&quot;,
+    &quot;values&quot;: &quot;数值或 [水平, 垂直] 数组&quot;,
+    &quot;default&quot;: &quot;16px&quot;
+  }, {
+    &quot;param&quot;: &quot;gutter&quot;,
+    &quot;description&quot;: &quot;网格间距，gap 的别名&quot;,
+    &quot;type&quot;: &quot;String&quot;,
+    &quot;values&quot;: &quot;数值&quot;,
+    &quot;default&quot;: &quot;16px&quot;
+  }, {
+    &quot;param&quot;: &quot;x-gap&quot;,
+    &quot;description&quot;: &quot;水平间距，与y-gap一起使用可分别设置水平和垂直间距&quot;,
+    &quot;type&quot;: &quot;String&quot;,
+    &quot;values&quot;: &quot;数值&quot;,
+    &quot;default&quot;: &quot;16px&quot;
+  }, {
+    &quot;param&quot;: &quot;y-gap&quot;,
+    &quot;description&quot;: &quot;垂直间距，与x-gap一起使用可分别设置水平和垂直间距&quot;,
+    &quot;type&quot;: &quot;String&quot;,
+    &quot;values&quot;: &quot;数值&quot;,
     &quot;default&quot;: &quot;16px&quot;
   }, {
     &quot;param&quot;: &quot;responsive&quot;,
     &quot;description&quot;: &quot;是否启用响应式布局&quot;,
+    &quot;type&quot;: &quot;Boolean&quot;,
+    &quot;values&quot;: &quot;true/false&quot;,
+    &quot;default&quot;: &quot;false&quot;
+  }, {
+    &quot;param&quot;: &quot;item-responsive&quot;,
+    &quot;description&quot;: &quot;是否启用项目级响应式布局&quot;,
     &quot;type&quot;: &quot;Boolean&quot;,
     &quot;values&quot;: &quot;true/false&quot;,
     &quot;default&quot;: &quot;false&quot;
@@ -233,7 +121,7 @@
   }]"
 ></v-table>
 
-<h2>v-grid-item / v-gi 属性</h2>
+<h3>v-grid-item / v-gi 属性</h3>
 <v-table 
   border="true"
   stripe="true"
@@ -320,6 +208,191 @@
     &quot;width&quot;: &quot;150px&quot;
   }]"
 ></v-table>
+
+<h2>高级用法与示例演示</h2>
+
+<div class="demo">
+  <v-card title="网格偏移" subtitle="使用 offset 属性设置网格项左侧的偏移量。">
+    <v-grid cols="12" gap="16px">
+      <v-grid-item span="8">
+        <div class="demo-blue-box">span=8</div>
+      </v-grid-item>
+      <v-grid-item span="8" offset="4">
+        <div class="demo-blue-box demo-blue-light">span=8 offset=4</div>
+      </v-grid-item>
+      <v-grid-item span="6" offset="3">
+        <div class="demo-blue-box">span=6 offset=3</div>
+      </v-grid-item>
+      <v-grid-item span="6" offset="3">
+        <div class="demo-blue-box demo-blue-light">span=6 offset=3</div>
+      </v-grid-item>
+      <v-grid-item span="4">
+        <div class="demo-blue-box">span=4</div>
+      </v-grid-item>
+      <v-grid-item span="4" offset="4">
+        <div class="demo-blue-box demo-blue-light">span=4 offset=4</div>
+      </v-grid-item>
+      <v-grid-item span="4" offset="4">
+        <div class="demo-blue-box">span=4 offset=4</div>
+      </v-grid-item>
+    </v-grid>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<v-grid cols="12" gap="16px">
+  <v-grid-item span="8">span=8</v-grid-item>
+  <v-grid-item span="8" offset="4">span=8 offset=4</v-grid-item>
+  <v-grid-item span="6" offset="3">span=6 offset=3</v-grid-item>
+  <v-grid-item span="6" offset="3">span=6 offset=3</v-grid-item>
+  <v-grid-item span="4">span=4</v-grid-item>
+  <v-grid-item span="4" offset="4">span=4 offset=4</v-grid-item>
+  <v-grid-item span="4" offset="4">span=4 offset=4</v-grid-item>
+</v-grid>'>
+</v-code-display>
+
+<div class="demo">
+  <v-card title="间距控制" subtitle="使用 x-gap 和 y-gap 属性分别设置水平和垂直间距。">
+    <v-grid cols="4" x-gap="20" y-gap="30">
+      <v-grid-item span="1">
+        <div class="demo-blue-box">Item 1</div>
+      </v-grid-item>
+      <v-grid-item span="1">
+        <div class="demo-blue-box demo-blue-light">Item 2</div>
+      </v-grid-item>
+      <v-grid-item span="1">
+        <div class="demo-blue-box">Item 3</div>
+      </v-grid-item>
+      <v-grid-item span="1">
+        <div class="demo-blue-box demo-blue-light">Item 4</div>
+      </v-grid-item>
+      <v-grid-item span="2">
+        <div class="demo-blue-box">Item 5</div>
+      </v-grid-item>
+      <v-grid-item span="2">
+        <div class="demo-blue-box demo-blue-light">Item 6</div>
+      </v-grid-item>
+    </v-grid>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<v-grid cols="4" x-gap="20" y-gap="30">
+  <v-grid-item span="1">Item 1</v-grid-item>
+  <v-grid-item span="1">Item 2</v-grid-item>
+  <v-grid-item span="1">Item 3</v-grid-item>
+  <v-grid-item span="1">Item 4</v-grid-item>
+  <v-grid-item span="2">Item 5</v-grid-item>
+  <v-grid-item span="2">Item 6</v-grid-item>
+</v-grid>'>
+</v-code-display>
+
+<div class="demo">
+  <v-card title="响应式网格" subtitle="在不同屏幕尺寸下显示不同的网格配置，支持 xs/sm/md/lg/xl/xxl 六个断点。">
+    <v-grid responsive="true" cols="12" gap="16px">
+      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
+        <div class="demo-blue-box">xs:6 sm:4 md:3 lg:2</div>
+      </v-grid-item>
+      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
+        <div class="demo-blue-box demo-blue-light">xs:6 sm:4 md:3 lg:2</div>
+      </v-grid-item>
+      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
+        <div class="demo-blue-box">xs:6 sm:4 md:3 lg:2</div>
+      </v-grid-item>
+      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
+        <div class="demo-blue-box demo-blue-light">xs:6 sm:4 md:3 lg:2</div>
+      </v-grid-item>
+      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
+        <div class="demo-blue-box">xs:6 sm:4 md:3 lg:2</div>
+      </v-grid-item>
+      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
+        <div class="demo-blue-box demo-blue-light">xs:6 sm:4 md:3 lg:2</div>
+      </v-grid-item>
+    </v-grid>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<v-grid responsive="true" cols="12" gap="16px">
+  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
+  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
+  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
+  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
+  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
+  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
+</v-grid>'>
+</v-code-display>
+
+<div class="demo">
+  <v-card title="响应式偏移" subtitle="在不同屏幕尺寸下使用不同的偏移量，格式为 "span,offset"。">
+    <v-grid cols="12" gap="16px">
+      <v-grid-item span="6" md="8,2" lg="6,3">
+        <div class="demo-blue-box">md:8,2 lg:6,3</div>
+      </v-grid-item>
+      <v-grid-item span="4" offset="2" md="4,2" lg="3,3">
+        <div class="demo-blue-box demo-blue-light">md:4,2 lg:3,3</div>
+      </v-grid-item>
+    </v-grid>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<v-grid cols="12" gap="16px">
+  <v-grid-item span="6" md="8,2" lg="6,3">md:8,2 lg:6,3</v-grid-item>
+  <v-grid-item span="4" offset="2" md="4,2" lg="3,3">md:4,2 lg:3,3</v-grid-item>
+</v-grid>'>
+</v-code-display>
+
+<div class="demo">
+  <v-card title="响应式列数定义" subtitle="使用语法定义响应式列数，如 '6 400:4 600:2'。">
+    <v-grid cols="6 400:4 600:2" gap="16px">
+      <v-grid-item span="1">
+        <div class="demo-blue-box">Item 1</div>
+      </v-grid-item>
+      <v-grid-item span="1">
+        <div class="demo-blue-box demo-blue-light">Item 2</div>
+      </v-grid-item>
+      <v-grid-item span="1">
+        <div class="demo-blue-box">Item 3</div>
+      </v-grid-item>
+      <v-grid-item span="1">
+        <div class="demo-blue-box demo-blue-light">Item 4</div>
+      </v-grid-item>
+      <v-grid-item span="1">
+        <div class="demo-blue-box">Item 5</div>
+      </v-grid-item>
+      <v-grid-item span="1">
+        <div class="demo-blue-box demo-blue-light">Item 6</div>
+      </v-grid-item>
+    </v-grid>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<v-grid cols="6 400:4 600:2" gap="16px">
+  <v-grid-item span="1">Item 1</v-grid-item>
+  <v-grid-item span="1">Item 2</v-grid-item>
+  <v-grid-item span="1">Item 3</v-grid-item>
+  <v-grid-item span="1">Item 4</v-grid-item>
+  <v-grid-item span="1">Item 5</v-grid-item>
+  <v-grid-item span="1">Item 6</v-grid-item>
+</v-grid>'>
+</v-code-display>
 
 <h2>断点说明</h2>
 <v-table 
