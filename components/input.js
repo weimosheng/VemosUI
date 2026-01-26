@@ -45,37 +45,58 @@ function registerInputComponent() {
           width: 100%;
           height: 36px;
           padding: 0 12px;
-          background-color: #fff;
+          background-color: var(--vemos-bg-default, #fff);
           background-image: none;
-          border: 1px solid #dcdfe6;
+          border: 1px solid var(--vemos-border-default, #dcdfe6);
           border-radius: 4px;
           box-sizing: border-box;
-          color: #606266;
+          color: var(--vemos-text-default, #606266);
           font-size: inherit;
           transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
         
+        /* 暗黑模式下输入框的样式 */
+        [data-theme="dark"] .v-input__inner {
+          background-color: var(--vemos-bg-default, #2d3748);
+          border-color: var(--vemos-border-default, #4a5568);
+          color: var(--vemos-text-default, #e2e8f0);
+        }
+        
         .v-input__inner::placeholder {
-          color: #c0c4cc;
+          color: var(--vemos-text-tertiary, #c0c4cc);
           transition: all 0.3s;
         }
         
+        [data-theme="dark"] .v-input__inner::placeholder {
+          color: var(--vemos-text-tertiary, #718096);
+        }
+        
         .v-input__inner:hover {
-          border-color: #b4bccc;
+          border-color: var(--vemos-text-tertiary, #b4bccc);
+        }
+        
+        [data-theme="dark"] .v-input__inner:hover {
+          border-color: var(--vemos-text-tertiary, #718096);
         }
         
         .v-input__inner:focus {
           outline: none;
-          border-color: #409eff;
+          border-color: var(--vemos-bg-primary, #409eff);
           box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.1);
           transform: translateY(-1px);
         }
         
         .v-input__inner:disabled {
-          background-color: #f5f7fa;
-          border-color: #e4e7ed;
-          color: #c0c4cc;
+          background-color: var(--vemos-bg-tertiary, #f5f7fa);
+          border-color: var(--vemos-border-default, #e4e7ed);
+          color: var(--vemos-text-tertiary, #c0c4cc);
           cursor: not-allowed;
+        }
+        
+        [data-theme="dark"] .v-input__inner:disabled {
+          background-color: var(--vemos-bg-tertiary, #4a5568);
+          border-color: var(--vemos-border-default, #718096);
+          color: var(--vemos-text-tertiary, #a0aec0);
         }
       `,
       mounted() {

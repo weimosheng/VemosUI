@@ -16,6 +16,24 @@
   code="<v-navbar title=&quot;我的网站&quot;></v-navbar>">
 </v-code-display>
 
+<h2>带Logo的导航栏</h2>
+<div class="demo">
+  <v-card title="带图片Logo的导航栏">
+    <v-navbar title="我的网站" logo="https://via.placeholder.com/100x40/409EFF/FFFFFF?text=LOGO" logo-text="MyLogo">
+      <v-button slot="right" type="default">登录</v-button>
+    </v-navbar>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-navbar title=&quot;我的网站&quot; logo=&quot;https://via.placeholder.com/100x40/409EFF/FFFFFF?text=LOGO&quot; logo-text=&quot;MyLogo&quot;>
+  <v-button slot=&quot;right&quot; type=&quot;default&quot;>登录</v-button>
+</v-navbar>">
+</v-code-display>
+
 <h2>带左右插槽的导航栏</h2>
 <div class="demo">
   <v-card title="带插槽的导航栏">
@@ -63,7 +81,7 @@
     <v-navbar title="警告主题" theme="warning" style="margin-bottom: 10px;">
       <v-button slot="left" type="default">菜单</v-button>
     </v-navbar>
-    <v-navbar title="危险主题" theme="danger" style="margin-bottom: 10px;">
+    <v-navbar title="错误主题" theme="error" style="margin-bottom: 10px;">
       <v-button slot="left" type="default">菜单</v-button>
     </v-navbar>
     <v-navbar title="信息主题" theme="info" style="margin-bottom: 10px;">
@@ -77,6 +95,8 @@
     </v-navbar>
   </v-card>
 </div>
+
+<p><strong>注意：</strong> 所有主题都会自动跟随全局主题设置（明亮/暗黑模式），无需额外配置。</p>
 
 <v-code-display 
   lang="html"
@@ -97,7 +117,7 @@
 <v-navbar title=&quot;警告主题&quot; theme=&quot;warning&quot;>
   <v-button slot=&quot;left&quot; type=&quot;default&quot;>菜单</v-button>
 </v-navbar>
-<v-navbar title=&quot;危险主题&quot; theme=&quot;danger&quot;>
+<v-navbar title=&quot;错误主题&quot; theme=&quot;error&quot;>
   <v-button slot=&quot;left&quot; type=&quot;default&quot;>菜单</v-button>
 </v-navbar>
 <v-navbar title=&quot;信息主题&quot; theme=&quot;info&quot;>
@@ -116,7 +136,9 @@
   data='[
     {"param": "title", "description": "导航栏标题", "type": "String", "values": "-", "default": "VemosUI"},
     {"param": "fixed", "description": "是否固定在顶部", "type": "Boolean", "values": "true/false", "default": "false"},
-    {"param": "theme", "description": "主题颜色", "type": "String", "values": "default/primary/success/warning/danger/info/dark/light", "default": "default"}
+    {"param": "theme", "description": "主题颜色", "type": "String", "values": "default/primary/success/warning/error/info/dark/light", "default": "default"},
+    {"param": "logo", "description": "Logo图片地址", "type": "String", "values": "-", "default": "-"},
+    {"param": "logo-text", "description": "Logo文本（当没有图片时显示）", "type": "String", "values": "-", "default": "Logo"}
   ]'
   columns='[
     {"prop": "param", "title": "参数", "width": "150px"},
@@ -132,7 +154,7 @@
   border="true"
   stripe="true"
   data='[
-    {"name": "left", "description": "左侧内容插槽"},
+    {"name": "left", "description": "左侧内容插槽（Logo之后）"},
     {"name": "right", "description": "右侧内容插槽"}
   ]'
   columns='[

@@ -3,7 +3,7 @@
 // 确保VemosUI已存在
 function registerSidebarComponent() {
   if (window.VemosUI) {
-    // 创建一个内部函数来处理事件绑定
+    // 创建一个内部函数来 handle 事件绑定
     const bindEvents = function(self) {
       // 为菜单项添加点击事件
       const menuItems = self.shadowRoot.querySelectorAll('.v-sidebar-item__content');
@@ -137,7 +137,8 @@ function registerSidebarComponent() {
         .v-sidebar {
           height: 100%;
           min-height: 100vh;
-          background-color: #fff;
+          background-color: var(--vemos-bg-default, #fff);
+          color: var(--vemos-text-default, #333);
           box-shadow: 2px 0 6px rgba(0,21,41,.1);
           display: flex;
           flex-direction: column;
@@ -145,9 +146,15 @@ function registerSidebarComponent() {
           overflow-x: hidden;
         }
         
+        /* 暗黑模式下侧边栏的样式 */
+        [data-theme="dark"] .v-sidebar {
+          background-color: var(--vemos-bg-default, #2d3748);
+          color: var(--vemos-text-default, #e2e8f0);
+        }
+        
         .v-sidebar__header {
           padding: 20px;
-          border-bottom: 1px solid #e6e6e6;
+          border-bottom: 1px solid var(--vemos-border-default, #e6e6e6);
         }
         
         .v-sidebar__menu {
@@ -158,9 +165,9 @@ function registerSidebarComponent() {
         
         .v-sidebar__footer {
           padding: 10px;
-          border-top: 1px solid #e6e6e6;
+          border-top: 1px solid var(--vemos-border-default, #e6e6e6);
           font-size: 12px;
-          color: #909399;
+          color: var(--vemos-text-tertiary, #909399);
         }
         
         .v-sidebar-item {
@@ -178,13 +185,13 @@ function registerSidebarComponent() {
         }
         
         .v-sidebar-item__content:hover {
-          background-color: #ecf5ff;
-          color: #409eff;
+          background-color: var(--vemos-bg-tertiary, #ecf5ff);
+          color: var(--vemos-text-primary, #409eff);
         }
         
         .v-sidebar-item--active > .v-sidebar-item__content {
-          background-color: #409eff;
-          color: #fff;
+          background-color: var(--vemos-bg-primary, #409eff);
+          color: var(--vemos-text-primary, #fff);
         }
         
         .v-sidebar-item__icon {
@@ -225,8 +232,8 @@ function registerSidebarComponent() {
         }
         
         .v-sidebar-subitem:hover {
-          background-color: #ecf5ff;
-          color: #409eff;
+          background-color: var(--vemos-bg-tertiary, #ecf5ff);
+          color: var(--vemos-text-primary, #409eff);
         }
         
         .v-sidebar-subitem__icon {

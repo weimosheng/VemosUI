@@ -78,7 +78,6 @@ function registerCodeDisplayComponent() {
       },
       styles: `
         .v-code-display {
-          border: 1px solid #eaecef;
           border-radius: 4px;
           font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
           background-color: #2d2d2d;

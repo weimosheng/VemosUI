@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>暗黑模式API - VemosUI</title>
+  <script src="../VemosUI.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: var(--vemos-bg-default, #fff);
+      color: var(--vemos-text-default, #333);
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      color: var(--vemos-text-primary, #409eff);
+      border-bottom: 2px solid var(--vemos-bg-primary, #409eff);
+      padding-bottom: 10px;
+    }
+    
+    h2 {
+      color: var(--vemos-text-primary, #409eff);
+      margin-top: 30px;
+    }
+    
+    .section {
+      margin: 30px 0;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: var(--vemos-bg-tertiary, #f5f7fa);
+    }
+    
+    .api-method {
+      background-color: var(--vemos-bg-default, #fff);
+      padding: 15px;
+      border-radius: 5px;
+      border-left: 4px solid var(--vemos-bg-primary, #409eff);
+      margin: 15px 0;
+    }
+    
+    code {
+      background-color: var(--vemos-bg-tertiary, #f5f7fa);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+    
+    pre {
+      background-color: var(--vemos-bg-tertiary, #f5f7fa);
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    
+    .demo-section {
+      margin: 20px 0;
+      padding: 20px;
+      background-color: var(--vemos-bg-default, #fff);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .control-group {
+      display: flex;
+      gap: 15px;
+      margin: 15px 0;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>VemosUI 暗黑模式 API</h1>
+    
+    <p>VemosUI 提供了灵活的 API 来控制暗黑模式的开启和关闭，以及检测当前主题状态。通过这些 API，你可以轻松地在明亮和暗黑主题之间切换，或者让用户选择跟随系统设置。</p>
+    
+    <div class="section">
+      <h2>API 方法</h2>
+      
+      <div class="api-method">
+        <h3><code>window.VemosUI.toggleDarkMode(enable)</code></h3>
+        <p><strong>描述：</strong> 切换暗黑模式的开启或关闭状态</p>
+        <p><strong>参数：</strong></p>
+        <ul>
+          <li><code>enable</code> (boolean) - 是否启用暗黑模式</li>
+        </ul>
+        <p><strong>用法：</strong></p>
+        <pre><code>// 启用暗黑模式
+window.VemosUI.toggleDarkMode(true);
+
+// 关闭暗黑模式（回到明亮模式）
+window.VemosUI.toggleDarkMode(false);</code></pre>
+      </div>
+      
+      <div class="api-method">
+        <h3><code>window.VemosUI.isDarkMode()</code></h3>
+        <p><strong>描述：</strong> 检查当前是否为暗黑模式</p>
+        <p><strong>返回值：</strong> (boolean) 如果当前是暗黑模式则返回 true，否则返回 false</p>
+        <p><strong>用法：</strong></p>
+        <pre><code>// 检查当前是否为暗黑模式
+if (window.VemosUI.isDarkMode()) {
+  console.log('当前为暗黑模式');
+} else {
+  console.log('当前为明亮模式');
+}</code></pre>
+      </div>
+      
+      <div class="api-method">
+        <h3><code>window.VemosUI.toggleTheme(theme)</code></h3>
+        <p><strong>描述：</strong> 更通用的主题切换方法，支持明亮、暗黑和自动（跟随系统）</p>
+        <p><strong>参数：</strong></p>
+        <ul>
+          <li><code>theme</code> ('light' | 'dark' | 'auto') - 要切换的主题类型</li>
+        </ul>
+        <p><strong>用法：</strong></p>
+        <pre><code>// 设置为明亮模式
+window.VemosUI.toggleTheme('light');
+
+// 设置为暗黑模式
+window.VemosUI.toggleTheme('dark');
+
+// 跟随系统设置
+window.VemosUI.toggleTheme('auto');</code></pre>
+      </div>
+      
+      <div class="api-method">
+        <h3><code>window.VemosUI.getCurrentTheme()</code></h3>
+        <p><strong>描述：</strong> 获取当前的主题设置</p>
+        <p><strong>返回值：</strong> ('light' | 'dark' | 'auto') 当前主题类型</p>
+        <p><strong>用法：</strong></p>
+        <pre><code>// 获取当前主题
+const currentTheme = window.VemosUI.getCurrentTheme();
+console.log('当前主题:', currentTheme);</code></pre>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>使用示例</h2>
+      
+      <div class="demo-section">
+        <h3>暗黑模式切换演示</h3>
+        <p>点击以下按钮来切换暗黑模式：</p>
+        
+        <div class="control-group">
+          <v-button onclick="window.VemosUI.toggleDarkMode(true)">启用暗黑模式</v-button>
+          <v-button onclick="window.VemosUI.toggleDarkMode(false)">启用明亮模式</v-button>
+          <v-button type="primary" onclick="window.VemosUI.toggleTheme('auto')">跟随系统</v-button>
+        </div>
+        
+        <div class="control-group">
+          <v-button type="success" onclick="checkCurrentMode()">检查当前模式</v-button>
+          <v-button type="warning" onclick="showCurrentTheme()">显示当前主题</v-button>
+        </div>
+        
+        <div id="status-display" style="margin-top: 20px; padding: 15px; background-color: var(--vemos-bg-tertiary, #f5f7fa); border-radius: 5px;">
+          <p>当前状态将在点击按钮后显示在这里</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>注意事项</h2>
+      <ul>
+        <li>主题设置会保存在 <code>localStorage</code> 中，即使刷新页面也会保持设置</li>
+        <li><code>toggleDarkMode</code> 是 <code>toggleTheme</code> 的简化版本，专门用于暗黑模式的切换</li>
+        <li>如果用户选择了"跟随系统"，则会在系统主题发生变化时自动切换</li>
+        <li>所有的 UI 组件都会自动响应主题变化</li>
+      </ul>
+    </div>
+  </div>
+  
+  <script>
+    function checkCurrentMode() {
+      const isDark = window.VemosUI.isDarkMode();
+      const statusDisplay = document.getElementById('status-display');
+      statusDisplay.innerHTML = `
+        <h4>暗黑模式状态</h4>
+        <p>${isDark ? '当前为 <strong>暗黑模式</strong>' : '当前为 <strong>明亮模式</strong>'}</p>
+      `;
+    }
+    
+    function showCurrentTheme() {
+      const currentTheme = window.VemosUI.getCurrentTheme();
+      const statusDisplay = document.getElementById('status-display');
+      
+      let themeDescription = '';
+      switch(currentTheme) {
+        case 'light':
+          themeDescription = '明亮模式';
+          break;
+        case 'dark':
+          themeDescription = '暗黑模式';
+          break;
+        case 'auto':
+          themeDescription = '跟随系统';
+          break;
+        default:
+          themeDescription = '未知';
+      }
+      
+      statusDisplay.innerHTML = `
+        <h4>当前主题设置</h4>
+        <p>主题: <strong>${themeDescription}</strong> (${currentTheme})</p>
+        <p>系统偏好: <strong>${window.matchMedia('(prefers-color-scheme: dark)').matches ? '暗黑' : '明亮'}</strong></p>
+      `;
+    }
+    
+    // 页面加载后显示当前状态
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        showCurrentTheme();
+      }, 500); // 稍微延迟以确保VemosUI已初始化
+    });
+  </script>
+</body>
+</html>

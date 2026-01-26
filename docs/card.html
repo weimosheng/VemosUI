@@ -3,6 +3,7 @@
 <p>v-card 是一个卡片组件，用于展示内容区块。</p>
 
 <h2>基本用法</h2>
+<p><small>使用 title 属性来定义卡片的标题</small></p>
 <div class="demo">
   <v-card title="卡片标题">
     <p>这是卡片的内容区域。</p>
@@ -20,7 +21,27 @@
 </v-card>">
 </v-code-display>
 
+<h2>带副标题的卡片</h2>
+<p><small>使用 subtitle 属性来定义卡片的副标题</small></p>
+<div class="demo">
+  <v-card title="卡片标题" subtitle="这是一个副标题">
+    <p>这是卡片的内容区域。</p>
+    <p>副标题可以帮助提供更多上下文信息。</p>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-card title=&quot;卡片标题&quot; subtitle=&quot;这是一个副标题&quot;>
+  <p>这是卡片的内容区域。</p>
+  <p>副标题可以帮助提供更多上下文信息。</p>
+</v-card>">
+</v-code-display>
+
 <h2>带页脚的卡片</h2>
+<p><small>使用 footer 属性来定义卡片的页脚内容</small></p>
 <div class="demo">
   <v-card title="带页脚的卡片" footer="这是页脚内容">
     <p>这是卡片的内容区域。</p>
@@ -42,6 +63,7 @@
   stripe="true",
   data='[
     {"param": "title", "description": "卡片标题", "type": "String", "values": "-", "default": "-"},
+    {"param": "subtitle", "description": "卡片副标题", "type": "String", "values": "-", "default": "-"},
     {"param": "footer", "description": "卡片页脚", "type": "String", "values": "-", "default": "-"}
   ]',
   columns='[

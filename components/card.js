@@ -5,39 +5,42 @@ function registerCardComponent() {
   if (window.VemosUI) {
     // 注册卡片组件
     window.VemosUI.registerComponent('v-card', {
-      props: ['title', 'header'],
+      props: ['title', 'subtitle', 'header', 'footer'],
       template(props) {
-        const { title = '', header = '', children } = props;
+        const { title = '', subtitle = '', header = '', footer = '', children } = props;
         
         return `
           <div class="v-card">
             ${(title || header) ? `<div class="v-card__header">
               <div class="v-card__title">${title || header}</div>
+              ${subtitle ? `<div class="v-card__subtitle">${subtitle}</div>` : ''}
             </div>` : ''}
             <div class="v-card__body">
               ${children || '<slot></slot>'}
             </div>
+            ${footer ? `<div class="v-card__footer">${footer}</div>` : ''}
           </div>
         `;
       },
       styles: `
         .v-card {
-          border: 1px solid #ebeef5;
+          border: 1px solid var(--vemos-border-default, #dcdfe6);
           border-radius: 4px;
-          background-color: #fff;
+          background-color: var(--vemos-bg-default, #fff);
+          color: var(--vemos-text-default, #303133);
           overflow: hidden;
-          box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
           transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
         
-        .v-card:hover {
-          box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.15);
-          transform: translateY(-2px);
+        /* 暗黑模式下卡片的样式 */
+        [data-theme="dark"] .v-card {
+          background-color: var(--vemos-bg-default, #2d3748);
+          color: var(--vemos-text-default, #e2e8f0);
+          border-color: var(--vemos-border-default, #4a5568);
         }
         
         .v-card__header {
-          padding: 16px 20px;
-          border-bottom: 1px solid #ebeef5;
+          padding: 16px 20px 0px 20px;
           box-sizing: border-box;
           transition: all 0.3s;
         }
@@ -45,12 +48,42 @@ function registerCardComponent() {
         .v-card__title {
           font-size: 16px;
           font-weight: bold;
-          color: #303133;
+          color: var(--vemos-text-default, #303133);
+          margin-bottom: 4px;
+        }
+        
+        /* 暗黑模式下标题的样式 */
+        [data-theme="dark"] .v-card__title {
+          color: var(--vemos-text-default, #e2e8f0);
+        }
+        
+        .v-card__subtitle {
+          font-size: 14px;
+          color: var(--vemos-text-tertiary, #909399);
+          margin-top: 2px;
+        }
+        
+        /* 暗黑模式下副标题的样式 */
+        [data-theme="dark"] .v-card__subtitle {
+          color: var(--vemos-text-tertiary, #cbd5e0) !important;
         }
         
         .v-card__body {
-          padding: 20px;
+          padding: 12px 20px 12px 20px;
           transition: all 0.3s;
+        }
+        
+        .v-card__footer {
+          padding: 0px 20px 16px 20px;
+          box-sizing: border-box;
+          transition: all 0.3s;
+          color: var(--vemos-text-tertiary, #909399);
+          font-size: 14px;
+        }
+        
+        /* 暗黑模式下页脚的样式 */
+        [data-theme="dark"] .v-card__footer {
+          color: var(--vemos-text-tertiary, #cbd5e0) !important;
         }
       `
     });

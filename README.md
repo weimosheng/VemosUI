@@ -45,10 +45,10 @@ VemosUI 是一个轻量级的前端UI框架，基于Web Components技术构建�
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 |------|------|------|--------|--------|
-| type | 按钮类型 | String | default/primary/success/warning/danger | default |
+| type | 按钮类型 | String | default/primary/success/warning/error | default |
 | size | 按钮尺寸 | String | small/medium/large | medium |
 | disabled | 是否禁用 | Boolean | true/false | false |
-| theme | 按钮主题颜色 | String | default/primary/success/warning/danger/info/dark/light | default |
+| theme | 按钮主题颜色 | String | default/primary/success/warning/error/info/dark/light | default |
 
 #### 动画效果
 
@@ -78,7 +78,7 @@ VemosUI 是一个轻量级的前端UI框架，基于Web Components技术构建�
 | border | 是否带有边框 | Boolean | true/false | false |
 | stripe | 是否为斑马纹表格 | Boolean | true/false | false |
 | size | 表格尺寸 | String | small/medium/large | medium |
-| theme | 表格主题 | String | default/primary/success/warning/danger/info | default |
+| theme | 表格主题 | String | default/primary/success/warning/error/info | default |
 
 #### 列配置属性
 
@@ -107,7 +107,7 @@ VemosUI 是一个轻量级的前端UI框架，基于Web Components技术构建�
 |------|------|------|--------|--------|
 | title | 卡片标题 | String | - | - |
 | header | 卡片头部 | String | - | - |
-| theme | 卡片主题颜色 | String | default/primary/success/warning/danger/info/dark/light | default |
+| theme | 卡片主题颜色 | String | default/primary/success/warning/error/info/dark/light | default |
 
 #### 动画效果
 
@@ -202,7 +202,7 @@ VemosUI 是一个轻量级的前端UI框架，基于Web Components技术构建�
 |------|------|------|--------|--------|
 | title | 导航栏标题 | String | - | 'VemosUI' |
 | fixed | 是否固定在顶部 | Boolean | true/false | false |
-| theme | 主题颜色 | String | default/primary/success/warning/danger/info/dark/light | default |
+| theme | 主题颜色 | String | default/primary/success/warning/error/info/dark/light | default |
 
 #### 插槽
 

@@ -5,18 +5,26 @@ function registerButtonComponent() {
   if (window.VemosUI) {
     // 注册按钮组件
     window.VemosUI.registerComponent('v-button', {
-      props: ['type', 'size', 'disabled', 'dashed', 'color', 'background', 'icon', 'circle'],
+      // 更新props数组，将danger替换为error
+      props: ['type', 'size', 'disabled', 'loading', 'icon', 'block', 'dashed', 'text', 'color', 'background', 'circle'],
       template(props) {
         const { 
           type = 'default', 
           size = 'medium', 
           disabled = false, 
+          loading = false, 
+          icon, 
+          block = false, 
           dashed = false,
-          color, 
+          text = false,
+          color,
           background,
-          icon = '',
-          circle = false
+          circle
         } = props;
+        
+        // 确保type值有效
+        const validTypes = ['default', 'primary', 'success', 'warning', 'info', 'error'];
+        const buttonType = validTypes.includes(type) ? type : 'default';
         
         // 检查dashed属性是否存在（支持布尔属性语法）
         const isDashed = props.hasOwnProperty('dashed') && 
@@ -64,7 +72,7 @@ function registerButtonComponent() {
           font-size: 14px;
           border-radius: 4px;
           cursor: pointer;
-          border: 1px solid #dcdfe6;
+          border: 1px solid var(--vemos-border-default, #dcdfe6);
           transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
           outline: none;
           position: relative;
@@ -84,77 +92,157 @@ function registerButtonComponent() {
         }
         
         .v-button.v-button--default {
-          background-color: #fff;
-          color: #606266;
+          background-color: var(--vemos-bg-default, #fff);
+          color: var(--vemos-text-default, #606266);
+        }
+        
+        /* 暗黑模式下默认按钮的样式 */
+        [data-theme="dark"] .v-button.v-button--default {
+          background-color: var(--vemos-bg-default);
+          color: var(--vemos-text-default);
+          border-color: var(--vemos-border-default);
         }
         
         .v-button.v-button--primary {
-          background-color: #409eff;
-          border-color: #409eff;
-          color: #fff;
+          background-color: var(--vemos-bg-primary);
+          border-color: var(--vemos-bg-primary);
+          color: var(--vemos-text-primary);
+        }
+        
+        /* 暗黑模式下主要按钮的样式 */
+        [data-theme="dark"] .v-button.v-button--primary {
+          background-color: var(--vemos-bg-primary);
+          border-color: var(--vemos-bg-primary);
+          color: var(--vemos-text-primary);
         }
         
         .v-button.v-button--success {
-          background-color: #67c23a;
-          border-color: #67c23a;
-          color: #fff;
+          background-color: var(--vemos-bg-success);
+          border-color: var(--vemos-bg-success);
+          color: var(--vemos-text-success);
+        }
+        
+        /* 暗黑模式下成功按钮的样式 */
+        [data-theme="dark"] .v-button.v-button--success {
+          background-color: var(--vemos-bg-success);
+          border-color: var(--vemos-bg-success);
+          color: var(--vemos-text-success);
         }
         
         .v-button.v-button--warning {
-          background-color: #e6a23c;
-          border-color: #e6a23c;
-          color: #fff;
+          background-color: var(--vemos-bg-warning);
+          border-color: var(--vemos-bg-warning);
+          color: var(--vemos-text-warning);
         }
         
-        .v-button.v-button--danger {
-          background-color: #f56c6c;
-          border-color: #f56c6c;
-          color: #fff;
+        /* 暗黑模式下警告按钮的样式 */
+        [data-theme="dark"] .v-button.v-button--warning {
+          background-color: var(--vemos-bg-warning);
+          border-color: var(--vemos-bg-warning);
+          color: var(--vemos-text-warning);
+        }
+        
+        .v-button.v-button--error {
+          background-color: var(--vemos-bg-error);
+          border-color: var(--vemos-bg-error);
+          color: var(--vemos-text-error);
+        }
+        
+        [data-theme="dark"] .v-button.v-button--error {
+          background-color: var(--vemos-bg-error);
+          border-color: var(--vemos-bg-error);
+          color: var(--vemos-text-error);
+        }
+        
+        .v-button.v-button--info {
+          background-color: var(--vemos-bg-info);
+          border-color: var(--vemos-bg-info);
+          color: var(--vemos-text-info);
+        }
+        
+        [data-theme="dark"] .v-button.v-button--info {
+          background-color: var(--vemos-bg-info);
+          border-color: var(--vemos-bg-info);
+          color: var(--vemos-text-info);
+        }
+        
+        /* 虚线按钮样式 */
+        .v-button.v-button--dashed {
+          background-color: transparent;
+          border-style: dashed;
+        }
+        
+        .v-button.v-button--dashed.v-button--default {
+          color: var(--vemos-bg-default);
+          border-color: var(--vemos-bg-default);
+        }
+        
+        .v-button.v-button--dashed.v-button--primary {
+          color: var(--vemos-bg-primary);
+          border-color: var(--vemos-bg-primary);
+        }
+        
+        .v-button.v-button--dashed.v-button--success {
+          color: var(--vemos-bg-success);
+          border-color: var(--vemos-bg-success);
+        }
+        
+        .v-button.v-button--dashed.v-button--warning {
+          color: var(--vemos-bg-warning);
+          border-color: var(--vemos-bg-warning);
+        }
+        
+        .v-button.v-button--dashed.v-button--error {
+          color: var(--vemos-bg-error);
+          border-color: var(--vemos-bg-error);
+        }
+        
+        .v-button.v-button--dashed.v-button--info {
+          color: var(--vemos-bg-info);
+          border-color: var(--vemos-bg-info);
+        }
+        
+        [data-theme="dark"] .v-button.v-button--dashed.v-button--default {
+          color: var(--vemos-bg-default);
+          border-color: var(--vemos-bg-default);
+        }
+        
+        [data-theme="dark"] .v-button.v-button--dashed.v-button--primary {
+          color: var(--vemos-bg-primary);
+          border-color: var(--vemos-bg-primary);
+        }
+        
+        [data-theme="dark"] .v-button.v-button--dashed.v-button--success {
+          color: var(--vemos-bg-success);
+          border-color: var(--vemos-bg-success);
+        }
+        
+        [data-theme="dark"] .v-button.v-button--dashed.v-button--warning {
+          color: var(--vemos-bg-warning);
+          border-color: var(--vemos-bg-warning);
+        }
+        
+        [data-theme="dark"] .v-button.v-button--dashed.v-button--error {
+          color: var(--vemos-bg-error);
+          border-color: var(--vemos-bg-error);
+        }
+        
+        [data-theme="dark"] .v-button.v-button--dashed.v-button--info {
+          color: var(--vemos-bg-info);
+          border-color: var(--vemos-bg-info);
         }
         
         .v-button.v-button--text {
           background-color: transparent;
           border: none;
-          color: #606266;
+          color: var(--vemos-text-primary, #409eff);
         }
         
-        .v-button.v-button--dashed {
-          border-style: dashed;
+        /* 暗黑模式下文本按钮的样式 */
+        [data-theme="dark"] .v-button.v-button--text {
           background-color: transparent;
-        }
-        
-        .v-button.v-button--dashed.v-button--default {
-          color: #606266;
-          border-color: #dcdfe6;
-        }
-        
-        .v-button.v-button--dashed.v-button--primary {
-          color: #409eff;
-          border-color: #409eff;
-          background-color: transparent;
-        }
-        
-        .v-button.v-button--dashed.v-button--success {
-          color: #67c23a;
-          border-color: #67c23a;
-          background-color: transparent;
-        }
-        
-        .v-button.v-button--dashed.v-button--warning {
-          color: #e6a23c;
-          border-color: #e6a23c;
-          background-color: transparent;
-        }
-        
-        .v-button.v-button--dashed.v-button--danger {
-          color: #f56c6c;
-          border-color: #f56c6c;
-          background-color: transparent;
-        }
-        
-        .v-button.v-button--dashed.v-button--text {
-          color: #606266;
-          background-color: transparent;
+          border: none;
+          color: var(--vemos-text-primary, #63b3ed);
         }
         
         .v-button.v-button--circle {
@@ -214,6 +302,8 @@ function registerButtonComponent() {
         .v-button__icon {
           margin-right: 6px;
           vertical-align: middle;
+          width: 1em;
+          height: 1em;
         }
         
         .v-button--circle .v-button__icon {
@@ -221,6 +311,15 @@ function registerButtonComponent() {
         }
       `,
       mounted() {
+        // 动态加载Font Awesome CSS到shadowRoot
+        if (!this.shadowRoot.querySelector('#font-awesome')) {
+          const link = document.createElement('link');
+          link.id = 'font-awesome';
+          link.rel = 'stylesheet';
+          link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+          this.shadowRoot.appendChild(link);
+        }
+        
         // 添加按钮点击波纹效果
         const button = this.shadowRoot.querySelector('.v-button');
         if (button) {

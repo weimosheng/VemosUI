@@ -1,0 +1,401 @@
+<h1>新栅格组件 (v-grid-container, v-grid-item, v-gi)</h1>
+
+<p>基于 CSS Grid 的栅格系统，提供了更灵活和强大的网格布局能力。相比传统的 Flexbox 布局，Grid 布局更适合二维布局需求，可以更好地控制行列位置和大小。v-grid-item 可以简写为 v-gi。</p>
+
+<h2>演示</h2>
+
+<div class="demo">
+  <v-card title="基本栅格系统" subtitle="使用 12 列的网格系统，可自定义列数，v-grid-item 可以简写为 v-gi。">
+    <v-grid-container columns="12" gap="16px">
+      <v-gi span="12">
+        <div class="demo-blue-box">span=12 (100%)</div>
+      </v-gi>
+      <v-gi span="6">
+        <div class="demo-blue-box demo-blue-light">span=6 (50%)</div>
+      </v-gi>
+      <v-gi span="6">
+        <div class="demo-blue-box">span=6 (50%)</div>
+      </v-gi>
+      <v-gi span="4">
+        <div class="demo-blue-box demo-blue-light">span=4 (33.3%)</div>
+      </v-gi>
+      <v-gi span="4">
+        <div class="demo-blue-box">span=4 (33.3%)</div>
+      </v-gi>
+      <v-gi span="4">
+        <div class="demo-blue-box demo-blue-light">span=4 (33.3%)</div>
+      </v-gi>
+    </v-grid-container>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<v-grid-container columns="12" gap="16px">
+  <v-gi span="12">span=12 (100%)</v-gi>
+  <v-gi span="6">span=6 (50%)</v-gi>
+  <v-gi span="6">span=6 (50%)</v-gi>
+  <v-gi span="4">span=4 (33.3%)</v-gi>
+  <v-gi span="4">span=4 (33.3%)</v-gi>
+  <v-gi span="4">span=4 (33.3%)</v-gi>
+</v-grid-container>'>
+</v-code-display>
+
+<div class="demo">
+  <v-card title="自定义列数" subtitle="使用 columns 属性自定义网格列数，默认为 12 列。">
+    <v-grid-container columns="6" gap="16px">
+      <v-grid-item span="6">
+        <div class="demo-blue-box">span=6 (100%)</div>
+      </v-grid-item>
+      <v-grid-item span="3">
+        <div class="demo-blue-box demo-blue-light">span=3 (50%)</div>
+      </v-grid-item>
+      <v-grid-item span="3">
+        <div class="demo-blue-box">span=3 (50%)</div>
+      </v-grid-item>
+      <v-grid-item span="2">
+        <div class="demo-blue-box demo-blue-light">span=2 (33.3%)</div>
+      </v-grid-item>
+      <v-grid-item span="2">
+        <div class="demo-blue-box">span=2 (33.3%)</div>
+      </v-grid-item>
+      <v-grid-item span="2">
+        <div class="demo-blue-box demo-blue-light">span=2 (33.3%)</div>
+      </v-grid-item>
+    </v-grid-container>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<v-grid-container columns="6" gap="16px">
+  <v-grid-item span="6">span=6 (100%)</v-grid-item>
+  <v-grid-item span="3">span=3 (50%)</v-grid-item>
+  <v-grid-item span="3">span=3 (50%)</v-grid-item>
+  <v-grid-item span="2">span=2 (33.3%)</v-grid-item>
+  <v-grid-item span="2">span=2 (33.3%)</v-grid-item>
+  <v-grid-item span="2">span=2 (33.3%)</v-grid-item>
+</v-grid-container>'>
+</v-code-display>
+
+<div class="demo">
+  <v-card title="网格偏移" subtitle="使用 offset 属性设置网格项左侧的偏移量。">
+    <v-grid-container columns="12" gap="16px">
+      <v-grid-item span="8">
+        <div class="demo-blue-box">span=8</div>
+      </v-grid-item>
+      <v-grid-item span="8" offset="4">
+        <div class="demo-blue-box demo-blue-light">span=8 offset=4</div>
+      </v-grid-item>
+      <v-grid-item span="6" offset="3">
+        <div class="demo-blue-box">span=6 offset=3</div>
+      </v-grid-item>
+      <v-grid-item span="6" offset="3">
+        <div class="demo-blue-box demo-blue-light">span=6 offset=3</div>
+      </v-grid-item>
+      <v-grid-item span="4">
+        <div class="demo-blue-box">span=4</div>
+      </v-grid-item>
+      <v-grid-item span="4" offset="4">
+        <div class="demo-blue-box demo-blue-light">span=4 offset=4</div>
+      </v-grid-item>
+      <v-grid-item span="4" offset="4">
+        <div class="demo-blue-box">span=4 offset=4</div>
+      </v-grid-item>
+    </v-grid-container>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<v-grid-container columns="12" gap="16px">
+  <v-grid-item span="8">span=8</v-grid-item>
+  <v-grid-item span="8" offset="4">span=8 offset=4</v-grid-item>
+  <v-grid-item span="6" offset="3">span=6 offset=3</v-grid-item>
+  <v-grid-item span="6" offset="3">span=6 offset=3</v-grid-item>
+  <v-grid-item span="4">span=4</v-grid-item>
+  <v-grid-item span="4" offset="4">span=4 offset=4</v-grid-item>
+  <v-grid-item span="4" offset="4">span=4 offset=4</v-grid-item>
+</v-grid-container>'>
+</v-code-display>
+
+<div class="demo">
+  <v-card title="响应式网格" subtitle="在不同屏幕尺寸下显示不同的网格配置，支持 xs/sm/md/lg/xl/xxl 六个断点。">
+    <v-grid-container responsive="true" columns="12" gap="16px">
+      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
+        <div class="demo-blue-box">xs:6 sm:4 md:3 lg:2</div>
+      </v-grid-item>
+      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
+        <div class="demo-blue-box demo-blue-light">xs:6 sm:4 md:3 lg:2</div>
+      </v-grid-item>
+      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
+        <div class="demo-blue-box">xs:6 sm:4 md:3 lg:2</div>
+      </v-grid-item>
+      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
+        <div class="demo-blue-box demo-blue-light">xs:6 sm:4 md:3 lg:2</div>
+      </v-grid-item>
+      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
+        <div class="demo-blue-box">xs:6 sm:4 md:3 lg:2</div>
+      </v-grid-item>
+      <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">
+        <div class="demo-blue-box demo-blue-light">xs:6 sm:4 md:3 lg:2</div>
+      </v-grid-item>
+    </v-grid-container>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<v-grid-container responsive="true" columns="12" gap="16px">
+  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
+  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
+  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
+  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
+  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
+  <v-grid-item span="2" xs="6" sm="4" md="3" lg="2">xs:6 sm:4 md:3 lg:2</v-grid-item>
+</v-grid-container>'>
+</v-code-display>
+
+<div class="demo">
+  <v-card title="响应式偏移" subtitle="在不同屏幕尺寸下使用不同的偏移量，格式为 "span,offset"。">
+    <v-grid-container columns="12" gap="16px">
+      <v-grid-item span="6" md="8,2" lg="6,3">
+        <div class="demo-blue-box">md:8,2 lg:6,3</div>
+      </v-grid-item>
+      <v-grid-item span="4" offset="2" md="4,2" lg="3,3">
+        <div class="demo-blue-box demo-blue-light">md:4,2 lg:3,3</div>
+      </v-grid-item>
+    </v-grid-container>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<v-grid-container columns="12" gap="16px">
+  <v-grid-item span="6" md="8,2" lg="6,3">md:8,2 lg:6,3</v-grid-item>
+  <v-grid-item span="4" offset="2" md="4,2" lg="3,3">md:4,2 lg:3,3</v-grid-item>
+</v-grid-container>'>
+</v-code-display>
+
+<h2>v-grid-container 属性</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data="[{
+    &quot;param&quot;: &quot;columns&quot;,
+    &quot;description&quot;: &quot;网格列数&quot;,
+    &quot;type&quot;: &quot;Number&quot;,
+    &quot;values&quot;: &quot;正整数&quot;,
+    &quot;default&quot;: &quot;12&quot;
+  }, {
+    &quot;param&quot;: &quot;gap&quot;,
+    &quot;description&quot;: &quot;网格间距&quot;,
+    &quot;type&quot;: &quot;String&quot;,
+    &quot;values&quot;: &quot;有效的CSS长度值&quot;,
+    &quot;default&quot;: &quot;16px&quot;
+  }, {
+    &quot;param&quot;: &quot;responsive&quot;,
+    &quot;description&quot;: &quot;是否启用响应式布局&quot;,
+    &quot;type&quot;: &quot;Boolean&quot;,
+    &quot;values&quot;: &quot;true/false&quot;,
+    &quot;default&quot;: &quot;false&quot;
+  }]"
+  columns="[{
+    &quot;prop&quot;: &quot;param&quot;,
+    &quot;title&quot;: &quot;参数&quot;,
+    &quot;width&quot;: &quot;150px&quot;
+  }, {
+    &quot;prop&quot;: &quot;description&quot;,
+    &quot;title&quot;: &quot;说明&quot;,
+    &quot;width&quot;: &quot;250px&quot;
+  }, {
+    &quot;prop&quot;: &quot;type&quot;,
+    &quot;title&quot;: &quot;类型&quot;,
+    &quot;width&quot;: &quot;150px&quot;
+  }, {
+    &quot;prop&quot;: &quot;values&quot;,
+    &quot;title&quot;: &quot;可选值&quot;,
+    &quot;width&quot;: &quot;250px&quot;
+  }, {
+    &quot;prop&quot;: &quot;default&quot;,
+    &quot;title&quot;: &quot;默认值&quot;,
+    &quot;width&quot;: &quot;150px&quot;
+  }]"
+></v-table>
+
+<h2>v-grid-item / v-gi 属性</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data="[{
+    &quot;param&quot;: &quot;span&quot;,
+    &quot;description&quot;: &quot;占据的网格列数&quot;,
+    &quot;type&quot;: &quot;Number&quot;,
+    &quot;values&quot;: &quot;正整数&quot;,
+    &quot;default&quot;: &quot;1&quot;
+  }, {
+    &quot;param&quot;: &quot;row-span&quot;,
+    &quot;description&quot;: &quot;占据的网格行数&quot;,
+    &quot;type&quot;: &quot;Number&quot;,
+    &quot;values&quot;: &quot;正整数&quot;,
+    &quot;default&quot;: &quot;1&quot;
+  }, {
+    &quot;param&quot;: &quot;col-start&quot;,
+    &quot;description&quot;: &quot;网格列起始位置&quot;,
+    &quot;type&quot;: &quot;Number&quot;,
+    &quot;values&quot;: &quot;正整数&quot;,
+    &quot;default&quot;: &quot;auto&quot;
+  }, {
+    &quot;param&quot;: &quot;offset&quot;,
+    &quot;description&quot;: &quot;网格左侧偏移列数&quot;,
+    &quot;type&quot;: &quot;Number&quot;,
+    &quot;values&quot;: &quot;非负整数&quot;,
+    &quot;default&quot;: &quot;0&quot;
+  }, {
+    &quot;param&quot;: &quot;xs&quot;,
+    &quot;description&quot;: &quot;&amp;lt;576px 响应式网格&quot;,
+    &quot;type&quot;: &quot;String|Number&quot;,
+    &quot;values&quot;: &quot;span 或 \&quot;span,offset\&quot;&quot;,
+    &quot;default&quot;: &quot;-&quot;
+  }, {
+    &quot;param&quot;: &quot;sm&quot;,
+    &quot;description&quot;: &quot;≥576px 响应式网格&quot;,
+    &quot;type&quot;: &quot;String|Number&quot;,
+    &quot;values&quot;: &quot;span 或 \&quot;span,offset\&quot;&quot;,
+    &quot;default&quot;: &quot;-&quot;
+  }, {
+    &quot;param&quot;: &quot;md&quot;,
+    &quot;description&quot;: &quot;≥768px 响应式网格&quot;,
+    &quot;type&quot;: &quot;String|Number&quot;,
+    &quot;values&quot;: &quot;span 或 \&quot;span,offset\&quot;&quot;,
+    &quot;default&quot;: &quot;-&quot;
+  }, {
+    &quot;param&quot;: &quot;lg&quot;,
+    &quot;description&quot;: &quot;≥992px 响应式网格&quot;,
+    &quot;type&quot;: &quot;String|Number&quot;,
+    &quot;values&quot;: &quot;span 或 \&quot;span,offset\&quot;&quot;,
+    &quot;default&quot;: &quot;-&quot;
+  }, {
+    &quot;param&quot;: &quot;xl&quot;,
+    &quot;description&quot;: &quot;≥1200px 响应式网格&quot;,
+    &quot;type&quot;: &quot;String|Number&quot;,
+    &quot;values&quot;: &quot;span 或 \&quot;span,offset\&quot;&quot;,
+    &quot;default&quot;: &quot;-&quot;
+  }, {
+    &quot;param&quot;: &quot;xxl&quot;,
+    &quot;description&quot;: &quot;≥1600px 响应式网格&quot;,
+    &quot;type&quot;: &quot;String|Number&quot;,
+    &quot;values&quot;: &quot;span 或 \&quot;span,offset\&quot;&quot;,
+    &quot;default&quot;: &quot;-&quot;
+  }]"
+  columns="[{
+    &quot;prop&quot;: &quot;param&quot;,
+    &quot;title&quot;: &quot;参数&quot;,
+    &quot;width&quot;: &quot;150px&quot;
+  }, {
+    &quot;prop&quot;: &quot;description&quot;,
+    &quot;title&quot;: &quot;说明&quot;,
+    &quot;width&quot;: &quot;250px&quot;
+  }, {
+    &quot;prop&quot;: &quot;type&quot;,
+    &quot;title&quot;: &quot;类型&quot;,
+    &quot;width&quot;: &quot;150px&quot;
+  }, {
+    &quot;prop&quot;: &quot;values&quot;,
+    &quot;title&quot;: &quot;可选值&quot;,
+    &quot;width&quot;: &quot;250px&quot;
+  }, {
+    &quot;prop&quot;: &quot;default&quot;,
+    &quot;title&quot;: &quot;默认值&quot;,
+    &quot;width&quot;: &quot;150px&quot;
+  }]"
+></v-table>
+
+<h2>断点说明</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data="[{
+    &quot;breakpoint&quot;: &quot;xs&quot;,
+    &quot;description&quot;: &quot;超小屏幕&quot;,
+    &quot;min-width&quot;: &quot;&amp;lt;576px&quot;,
+    &quot;典型设备&quot;: &quot;手机&quot;
+  }, {
+    &quot;breakpoint&quot;: &quot;sm&quot;,
+    &quot;description&quot;: &quot;小屏幕&quot;,
+    &quot;min-width&quot;: &quot;≥576px&quot;,
+    &quot;典型设备&quot;: &quot;平板&quot;
+  }, {
+    &quot;breakpoint&quot;: &quot;md&quot;,
+    &quot;description&quot;: &quot;中等屏幕&quot;,
+    &quot;min-width&quot;: &quot;≥768px&quot;,
+    &quot;典型设备&quot;: &quot;小桌面&quot;
+  }, {
+    &quot;breakpoint&quot;: &quot;lg&quot;,
+    &quot;description&quot;: &quot;大屏幕&quot;,
+    &quot;min-width&quot;: &quot;≥992px&quot;,
+    &quot;典型设备&quot;: &quot;桌面&quot;
+  }, {
+    &quot;breakpoint&quot;: &quot;xl&quot;,
+    &quot;description&quot;: &quot;超大屏幕&quot;,
+    &quot;min-width&quot;: &quot;≥1200px&quot;,
+    &quot;典型设备&quot;: &quot;大桌面&quot;
+  }, {
+    &quot;breakpoint&quot;: &quot;xxl&quot;,
+    &quot;description&quot;: &quot;超超大屏幕&quot;,
+    &quot;min-width&quot;: &quot;≥1600px&quot;,
+    &quot;典型设备&quot;: &quot;超大桌面&quot;
+  }]"
+  columns="[{
+    &quot;prop&quot;: &quot;breakpoint&quot;,
+    &quot;title&quot;: &quot;断点&quot;,
+    &quot;width&quot;: &quot;100px&quot;
+  }, {
+    &quot;prop&quot;: &quot;description&quot;,
+    &quot;title&quot;: &quot;说明&quot;,
+    &quot;width&quot;: &quot;150px&quot;
+  }, {
+    &quot;prop&quot;: &quot;min-width&quot;,
+    &quot;title&quot;: &quot;最小宽度&quot;,
+    &quot;width&quot;: &quot;150px&quot;
+  }, {
+    &quot;prop&quot;: &quot;典型设备&quot;,
+    &quot;title&quot;: &quot;典型设备&quot;,
+    &quot;width&quot;: &quot;150px&quot;
+  }]"
+></v-table>
+
+<style>
+.demo-blue-box {
+  background: rgba(0, 100, 200, 0.15);
+  color: white;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 4px;
+  font-weight: bold;
+}
+.demo-blue-light {
+  background: rgba(0, 100, 200, 0.25);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 4px;
+  height: 80px;
+  font-weight: bold;
+}
+</style>

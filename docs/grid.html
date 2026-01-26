@@ -1,0 +1,489 @@
+<h1>栅格组件 (v-container, v-row, v-col)</h1>
+
+<p>栅格组件是响应式布局的基础，采用 24 栅格系统，支持多端适配、灵活布局和多种对齐方式。</p>
+
+<h2>演示</h2>
+
+<div class="demo">
+  <v-card title="基本栅格系统" subtitle="使用 24 栅格系统，列宽总和为 24。">
+    <v-container>
+      <v-row gutter="16">
+        <v-col span="24">
+          <div class="demo-green-box">span=24 (100%)</div>
+        </v-col>
+        <v-col span="12">
+          <div class="demo-green-box demo-green-light">span=12 (50%)</div>
+        </v-col>
+        <v-col span="12">
+          <div class="demo-green-box">span=12 (50%)</div>
+        </v-col>
+        <v-col span="8">
+          <div class="demo-green-box demo-green-light">span=8 (33.3%)</div>
+        </v-col>
+        <v-col span="8">
+          <div class="demo-green-box">span=8 (33.3%)</div>
+        </v-col>
+        <v-col span="8">
+          <div class="demo-green-box demo-green-light">span=8 (33.3%)</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box">span=6 (25%)</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light">span=6 (25%)</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box">span=6 (25%)</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light">span=6 (25%)</div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<v-container>
+  <v-row gutter="16">
+    <v-col span="24">span=24 (100%)</v-col>
+    <v-col span="12">span=12 (50%)</v-col>
+    <v-col span="12">span=12 (50%)</v-col>
+    <v-col span="8">span=8 (33.3%)</v-col>
+    <v-col span="8">span=8 (33.3%)</v-col>
+    <v-col span="8">span=8 (33.3%)</v-col>
+    <v-col span="6">span=6 (25%)</v-col>
+    <v-col span="6">span=6 (25%)</v-col>
+    <v-col span="6">span=6 (25%)</v-col>
+    <v-col span="6">span=6 (25%)</v-col>
+  </v-row>
+</v-container>'>
+</v-code-display>
+
+<div class="demo">
+  <v-card title="响应式栅格" subtitle="在不同屏幕尺寸下显示不同的列宽，支持 xs/sm/md/lg/xl/xxl 六个断点。">
+    <v-container>
+      <v-row gutter="16">
+        <v-col xs="24" sm="12" md="8" lg="6" xl="4">
+          <div class="demo-green-box">xs:24 sm:12 md:8 lg:6 xl:4</div>
+        </v-col>
+        <v-col xs="24" sm="12" md="8" lg="6" xl="4">
+          <div class="demo-green-box demo-green-light">xs:24 sm:12 md:8 lg:6 xl:4</div>
+        </v-col>
+        <v-col xs="24" sm="12" md="8" lg="6" xl="4">
+          <div class="demo-green-box">xs:24 sm:12 md:8 lg:6 xl:4</div>
+        </v-col>
+        <v-col xs="24" sm="12" md="8" lg="6" xl="4">
+          <div class="demo-green-box demo-green-light">xs:24 sm:12 md:8 lg:6 xl:4</div>
+        </v-col>
+        <v-col xs="24" sm="12" md="8" lg="6" xl="4">
+          <div class="demo-green-box">xs:24 sm:12 md:8 lg:6 xl:4</div>
+        </v-col>
+        <v-col xs="24" sm="12" md="8" lg="6" xl="4">
+          <div class="demo-green-box demo-green-light">xs:24 sm:12 md:8 lg:6 xl:4</div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<v-container>
+  <v-row gutter="16">
+    <v-col xs="24" sm="12" md="8" lg="6" xl="4">
+      响应式列
+    </v-col>
+    <v-col xs="24" sm="12" md="8" lg="6" xl="4">
+      响应式列
+    </v-col>
+    <v-col xs="24" sm="12" md="8" lg="6" xl="4">
+      响应式列
+    </v-col>
+    <v-col xs="24" sm="12" md="8" lg="6" xl="4">
+      响应式列
+    </v-col>
+    <v-col xs="24" sm="12" md="8" lg="6" xl="4">
+      响应式列
+    </v-col>
+    <v-col xs="24" sm="12" md="8" lg="6" xl="4">
+      响应式列
+    </v-col>
+  </v-row>
+</v-container>'>
+</v-code-display>
+
+<div class="demo">
+  <v-card title="列偏移" subtitle="使用 offset 属性设置列左侧的偏移量。">
+    <v-container>
+      <v-row gutter="16">
+        <v-col span="8">
+          <div class="demo-green-box">span=8</div>
+        </v-col>
+        <v-col span="8" offset="8">
+          <div class="demo-green-box demo-green-light">span=8 offset=8</div>
+        </v-col>
+        <v-col span="6" offset="6">
+          <div class="demo-green-box">span=6 offset=6</div>
+        </v-col>
+        <v-col span="6" offset="6">
+          <div class="demo-green-box demo-green-light">span=6 offset=6</div>
+        </v-col>
+        <v-col span="4">
+          <div class="demo-green-box">span=4</div>
+        </v-col>
+        <v-col span="4" offset="4">
+          <div class="demo-green-box demo-green-light">span=4 offset=4</div>
+        </v-col>
+        <v-col span="4" offset="8">
+          <div class="demo-green-box">span=4 offset=8</div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<v-container>
+  <v-row gutter="16">
+    <v-col span="8">span=8</v-col>
+    <v-col span="8" offset="8">span=8 offset=8</v-col>
+    <v-col span="6" offset="6">span=6 offset=6</v-col>
+    <v-col span="6" offset="6">span=6 offset=6</v-col>
+    <v-col span="4">span=4</v-col>
+    <v-col span="4" offset="4">span=4 offset=4</v-col>
+    <v-col span="4" offset="8">span=4 offset=8</v-col>
+  </v-row>
+</v-container>'>
+</v-code-display>
+
+<div class="demo">
+  <v-card title="对齐方式" subtitle="使用 align 和 justify 属性设置行内项目的对齐方式。">
+    <h3 style="margin-bottom: 10px;">垂直对齐 (align)</h3>
+    <v-container>
+      <v-row gutter="16" align="start" style="min-height: 120px;">
+        <v-col span="6">
+          <div class="demo-green-box" style="height: 60px;">顶部对齐</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light" style="height: 80px;">顶部对齐</div>
+        </v-col>
+      </v-row>
+      
+      <v-row gutter="16" align="center" style="min-height: 120px; margin-top: 20px;">
+        <v-col span="6">
+          <div class="demo-green-box" style="height: 60px;">垂直居中</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light" style="height: 80px;">垂直居中</div>
+        </v-col>
+      </v-row>
+      
+      <v-row gutter="16" align="end" style="min-height: 120px; margin-top: 20px;">
+        <v-col span="6">
+          <div class="demo-green-box" style="height: 60px;">底部对齐</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light" style="height: 80px;">底部对齐</div>
+        </v-col>
+      </v-row>
+    </v-container>
+    
+    <h3 style="margin: 30px 0 10px 0;">水平对齐 (justify)</h3>
+    <v-container>
+      <v-row gutter="16" justify="start">
+        <v-col span="4">
+          <div class="demo-green-box">左对齐</div>
+        </v-col>
+        <v-col span="4">
+          <div class="demo-green-box demo-green-light">左对齐</div>
+        </v-col>
+      </v-row>
+      
+      <v-row gutter="16" justify="center" style="margin-top: 20px;">
+        <v-col span="4">
+          <div class="demo-green-box">居中对齐</div>
+        </v-col>
+        <v-col span="4">
+          <div class="demo-green-box demo-green-light">居中对齐</div>
+        </v-col>
+      </v-row>
+      
+      <v-row gutter="16" justify="end" style="margin-top: 20px;">
+        <v-col span="4">
+          <div class="demo-green-box">右对齐</div>
+        </v-col>
+        <v-col span="4">
+          <div class="demo-green-box demo-green-light">右对齐</div>
+        </v-col>
+      </v-row>
+      
+      <v-row gutter="16" justify="space-between" style="margin-top: 20px;">
+        <v-col span="4">
+          <div class="demo-green-box">两端对齐</div>
+        </v-col>
+        <v-col span="4">
+          <div class="demo-green-box demo-green-light">两端对齐</div>
+        </v-col>
+        <v-col span="4">
+          <div class="demo-green-box">两端对齐</div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<!-- 垂直对齐 -->
+<v-row gutter="16" align="start">...</v-row>
+<v-row gutter="16" align="center">...</v-row>
+<v-row gutter="16" align="end">...</v-row>
+
+<!-- 水平对齐 -->
+<v-row gutter="16" justify="start">...</v-row>
+<v-row gutter="16" justify="center">...</v-row>
+<v-row gutter="16" justify="end">...</v-row>
+<v-row gutter="16" justify="space-between">...</v-row>'>
+</v-code-display>
+
+<div class="demo">
+  <v-card title="间距控制" subtitle="使用 gutter 属性控制行和列之间的间距。支持单值和双值格式。">
+    <v-container>
+      <v-row gutter="8">
+        <v-col span="6">
+          <div class="demo-green-box">gutter=8</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light">gutter=8</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box">gutter=8</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light">gutter=8</div>
+        </v-col>
+      </v-row>
+      
+      <v-row gutter="16,8" style="margin-top: 20px;">
+        <v-col span="6">
+          <div class="demo-green-box">gutter="16,8"</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light">gutter="16,8"</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box">gutter="16,8"</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light">gutter="16,8"</div>
+        </v-col>
+      </v-row>
+      
+      <v-row gutter="24" style="margin-top: 20px;">
+        <v-col span="6">
+          <div class="demo-green-box">gutter=24</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light">gutter=24</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box">gutter=24</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light">gutter=24</div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<v-container>
+  <v-row gutter="8">
+    <v-col span="6">gutter=8</v-col>
+    <v-col span="6">gutter=8</v-col>
+    <v-col span="6">gutter=8</v-col>
+    <v-col span="6">gutter=8</v-col>
+  </v-row>
+  
+  <v-row gutter="16,8">
+    <v-col span="6">gutter="16,8" (行间距:16px, 列间距:8px)</v-col>
+    <v-col span="6">gutter="16,8"</v-col>
+    <v-col span="6">gutter="16,8"</v-col>
+    <v-col span="6">gutter="16,8"</v-col>
+  </v-row>
+  
+  <v-row gutter="24">
+    <v-col span="6">gutter=24</v-col>
+    <v-col span="6">gutter=24</v-col>
+    <v-col span="6">gutter=24</v-col>
+    <v-col span="6">gutter=24</v-col>
+  </v-row>
+</v-container>'>
+</v-code-display>
+
+<div class="demo">
+  <v-card title="流体容器" subtitle="使用 fluid 属性使容器宽度为 100%。">
+    <v-container fluid>
+      <v-row gutter="16">
+        <v-col span="6">
+          <div class="demo-green-box">流体容器</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light">流体容器</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box">流体容器</div>
+        </v-col>
+        <v-col span="6">
+          <div class="demo-green-box demo-green-light">流体容器</div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code='<v-container fluid>
+  <v-row gutter="16">
+    <v-col span="6">流体容器</v-col>
+    <v-col span="6">流体容器</v-col>
+    <v-col span="6">流体容器</v-col>
+    <v-col span="6">流体容器</v-col>
+  </v-row>
+</v-container>'>
+</v-code-display>
+
+<h2>容器属性</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data='[
+    {"param": "fluid", "description": "是否流体容器", "type": "Boolean", "values": "true/false", "default": "false"},
+    {"param": "max-width", "description": "容器最大宽度", "type": "String", "values": "有效的CSS宽度值", "default": "-"}
+  ]'
+  columns='[
+    {"prop": "param", "title": "参数", "width": "150px"},
+    {"prop": "description", "title": "说明", "width": "250px"},
+    {"prop": "type", "title": "类型", "width": "150px"},
+    {"prop": "values", "title": "可选值", "width": "250px"},
+    {"prop": "default", "title": "默认值", "width": "150px"}
+  ]'
+></v-table>
+
+<h2>行属性</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data='[
+    {"param": "gutter", "description": "间距，支持单值或双值（行间距,列间距）", "type": "String", "values": "如：16 或 16,8", "default": "0"},
+    {"param": "align", "description": "垂直对齐方式", "type": "String", "values": "start/center/end/stretch", "default": "stretch"},
+    {"param": "justify", "description": "水平对齐方式", "type": "String", "values": "start/center/end/space-between/space-around/space-evenly", "default": "start"},
+    {"param": "wrap", "description": "是否换行", "type": "String", "values": "wrap/nowrap/wrap-reverse", "default": "wrap"}
+  ]'
+  columns='[
+    {"prop": "param", "title": "参数", "width": "150px"},
+    {"prop": "description", "title": "说明", "width": "250px"},
+    {"prop": "type", "title": "类型", "width": "150px"},
+    {"prop": "values", "title": "可选值", "width": "250px"},
+    {"prop": "default", "title": "默认值", "width": "150px"}
+  ]'
+></v-table>
+
+<h2>列属性</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data='[
+    {"param": "span", "description": "栅格占位格数", "type": "Number", "values": "1-24", "default": "-"},
+    {"param": "offset", "description": "栅格左侧的间隔格数", "type": "Number", "values": "0-23", "default": "0"},
+    {"param": "order", "description": "栅格顺序", "type": "Number", "values": "-5到7的整数", "default": "0"},
+    {"param": "xs", "description": "<576px 响应式栅格", "type": "Number", "values": "1-24", "default": "-"},
+    {"param": "sm", "description": "≥576px 响应式栅格", "type": "Number", "values": "1-24", "default": "-"},
+    {"param": "md", "description": "≥768px 响应式栅格", "type": "Number", "values": "1-24", "default": "-"},
+    {"param": "lg", "description": "≥992px 响应式栅格", "type": "Number", "values": "1-24", "default": "-"},
+    {"param": "xl", "description": "≥1200px 响应式栅格", "type": "Number", "values": "1-24", "default": "-"},
+    {"param": "xxl", "description": "≥1400px 响应式栅格", "type": "Number", "values": "1-24", "default": "-"},
+    {"param": "xs-offset", "description": "<576px 响应式偏移", "type": "Number", "values": "0-23", "default": "0"},
+    {"param": "sm-offset", "description": "≥576px 响应式偏移", "type": "Number", "values": "0-23", "default": "0"},
+    {"param": "md-offset", "description": "≥768px 响应式偏移", "type": "Number", "values": "0-23", "default": "0"},
+    {"param": "lg-offset", "description": "≥992px 响应式偏移", "type": "Number", "values": "0-23", "default": "0"},
+    {"param": "xl-offset", "description": "≥1200px 响应式偏移", "type": "Number", "values": "0-23", "default": "0"},
+    {"param": "xxl-offset", "description": "≥1400px 响应式偏移", "type": "Number", "values": "0-23", "default": "0"},
+    {"param": "xs-order", "description": "<576px 响应式顺序", "type": "Number", "values": "-5到7的整数", "default": "0"},
+    {"param": "sm-order", "description": "≥576px 响应式顺序", "type": "Number", "values": "-5到7的整数", "default": "0"},
+    {"param": "md-order", "description": "≥768px 响应式顺序", "type": "Number", "values": "-5到7的整数", "default": "0"},
+    {"param": "lg-order", "description": "≥992px 响应式顺序", "type": "Number", "values": "-5到7的整数", "default": "0"},
+    {"param": "xl-order", "description": "≥1200px 响应式顺序", "type": "Number", "values": "-5到7的整数", "default": "0"},
+    {"param": "xxl-order", "description": "≥1400px 响应式顺序", "type": "Number", "values": "-5到7的整数", "default": "0"}
+  ]'
+  columns='[
+    {"prop": "param", "title": "参数", "width": "150px"},
+    {"prop": "description", "title": "说明", "width": "250px"},
+    {"prop": "type", "title": "类型", "width": "150px"},
+    {"prop": "values", "title": "可选值", "width": "250px"},
+    {"prop": "default", "title": "默认值", "width": "150px"}
+  ]'
+></v-table>
+
+<h2>断点说明</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data='[
+    {"breakpoint": "xs", "description": "超小屏幕", "min-width": "<576px", "典型设备": "手机"},
+    {"breakpoint": "sm", "description": "小屏幕", "min-width": "≥576px", "典型设备": "平板"},
+    {"breakpoint": "md", "description": "中等屏幕", "min-width": "≥768px", "典型设备": "小桌面"},
+    {"breakpoint": "lg", "description": "大屏幕", "min-width": "≥992px", "典型设备": "桌面"},
+    {"breakpoint": "xl", "description": "超大屏幕", "min-width": "≥1200px", "典型设备": "大桌面"},
+    {"breakpoint": "xxl", "description": "超超大屏幕", "min-width": "≥1400px", "典型设备": "超大桌面"}
+  ]'
+  columns='[
+    {"prop": "breakpoint", "title": "断点", "width": "100px"},
+    {"prop": "description", "title": "说明", "width": "150px"},
+    {"prop": "min-width", "title": "最小宽度", "width": "150px"},
+    {"prop": "典型设备", "title": "典型设备", "width": "150px"}
+  ]'
+></v-table>
+
+<style>
+.demo-green-box {
+  background: rgba(0, 128, 0, 0.15);
+  color: white;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 4px;
+  font-weight: bold;
+}
+.demo-green-light {
+  background: rgba(0, 128, 0, 0.25);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 4px;
+  height: 100px;
+  font-weight: bold;
+}
+</style>

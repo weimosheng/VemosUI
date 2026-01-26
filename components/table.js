@@ -82,10 +82,10 @@ function registerTableComponent() {
         .v-table {
           width: 100%;
           max-width: 100%;
-          background-color: #fff;
+          background-color: var(--vemos-bg-default, #fff);
           border-collapse: collapse;
           font-size: 14px;
-          color: #606266;
+          color: var(--vemos-text-default, #606266);
           overflow: hidden;
           box-sizing: border-box;
         }
@@ -97,13 +97,13 @@ function registerTableComponent() {
         }
         
         .v-table--border {
-          border: 1px solid #dcdfe6;
+          border: 1px solid var(--vemos-border-default, #dcdfe6);
           border-radius: 4px;
         }
         
         .v-table--border th,
         .v-table--border td {
-          border-right: 1px solid #dcdfe6;
+          border-right: 1px solid var(--vemos-border-default, #dcdfe6);
         }
         
         .v-table--border th:last-child,
@@ -112,15 +112,15 @@ function registerTableComponent() {
         }
         
         .v-table--border tr:not(:last-child) {
-          border-bottom: 1px solid #dcdfe6;
+          border-bottom: 1px solid var(--vemos-border-default, #dcdfe6);
         }
         
         .v-table--stripe .v-table__row:nth-child(even):not(.v-table__row--striped) {
-          background-color: #fafafa;
+          background-color: var(--vemos-bg-tertiary, #f5f7fa);
         }
         
         .v-table__row--striped {
-          background-color: #fafafa;
+          background-color: var(--vemos-bg-tertiary, #fafafa);
         }
         
         .v-table--small {
@@ -132,7 +132,7 @@ function registerTableComponent() {
         }
         
         .v-table__header {
-          background-color: #f5f7fa;
+          background-color: var(--vemos-bg-tertiary, #f5f7fa);
         }
         
         .v-table__row {
@@ -140,7 +140,7 @@ function registerTableComponent() {
         }
         
         .v-table__row:hover {
-          background-color: #ecf5ff;
+          background-color: var(--vemos-bg-tertiary, #ecf5ff);
         }
         
         .v-table__cell {
@@ -149,12 +149,14 @@ function registerTableComponent() {
           vertical-align: middle;
           min-width: 0;
           word-wrap: break-word;
+          color: var(--vemos-text-default, #606266);
         }
         
         .v-table__header .v-table__cell {
           padding: 10px 0;
           font-weight: 600;
-          color: #909399;
+          color: var(--vemos-text-default, #909399);
+          background-color: var(--vemos-bg-tertiary, #f5f7fa);
         }
         
         .v-table--small .v-table__cell {
@@ -183,83 +185,119 @@ function registerTableComponent() {
         
         /* 主题颜色 */
         .v-table--theme-default {
-          color: #606266;
+          color: var(--vemos-text-default, #606266);
         }
         
         .v-table--theme-default .v-table__header {
-          background-color: #f5f7fa;
-          color: #909399;
+          background-color: var(--vemos-bg-tertiary, #f5f7fa);
+          color: var(--vemos-text-default, #909399);
         }
         
         .v-table--theme-primary {
-          color: #409EFF;
+          color: var(--vemos-text-primary, #409EFF);
         }
         
         .v-table--theme-primary .v-table__header {
-          background-color: #409EFF;
-          color: #fff;
+          background-color: var(--vemos-bg-primary, #409EFF);
+          color: var(--vemos-text-primary, #fff);
         }
         
         .v-table--theme-success {
-          color: #67c23a;
+          color: var(--vemos-text-success, #67c23a);
         }
         
         .v-table--theme-success .v-table__header {
-          background-color: #67c23a;
-          color: #fff;
+          background-color: var(--vemos-bg-success, #67c23a);
+          color: var(--vemos-text-success, #fff);
         }
         
         .v-table--theme-warning {
-          color: #e6a23c;
+          color: var(--vemos-text-warning, #e6a23c);
         }
         
         .v-table--theme-warning .v-table__header {
-          background-color: #e6a23c;
-          color: #fff;
+          background-color: var(--vemos-bg-warning, #e6a23c);
+          color: var(--vemos-text-warning, #fff);
         }
         
-        .v-table--theme-danger {
-          color: #f56c6c;
+        .v-table--theme-error {
+          color: var(--vemos-text-error, #f56c6c);
         }
         
-        .v-table--theme-danger .v-table__header {
-          background-color: #f56c6c;
-          color: #fff;
+        .v-table--theme-error .v-table__header {
+          background-color: var(--vemos-bg-error, #f56c6c);
+          color: var(--vemos-text-error, #fff);
         }
         
         .v-table--theme-info {
-          color: #909399;
+          color: var(--vemos-text-tertiary, #909399);
         }
         
         .v-table--theme-info .v-table__header {
-          background-color: #909399;
-          color: #fff;
+          background-color: var(--vemos-bg-tertiary, #909399);
+          color: var(--vemos-text-tertiary, #fff);
         }
         
-        /* 主题背景色 */
+        /* 主题背景色 - 适配明亮/暗黑模式 */
         .v-table--theme-primary.v-table--background,
         .v-table--theme-primary.v-table--bg {
-          background-color: #ecf5ff;
+          background-color: var(--vemos-bg-primary, #409EFF);
+          color: var(--vemos-text-primary, #fff);
         }
         
         .v-table--theme-success.v-table--background,
         .v-table--theme-success.v-table--bg {
-          background-color: #f0f9eb;
+          background-color: var(--vemos-bg-success, #67C23A);
+          color: var(--vemos-text-success, #fff);
         }
         
         .v-table--theme-warning.v-table--background,
         .v-table--theme-warning.v-table--bg {
-          background-color: #fdf6ec;
+          background-color: var(--vemos-bg-warning, #E6A23C);
+          color: var(--vemos-text-warning, #fff);
         }
         
-        .v-table--theme-danger.v-table--background,
-        .v-table--theme-danger.v-table--bg {
-          background-color: #fef0f0;
+        .v-table--theme-error.v-table--background,
+        .v-table--theme-error.v-table--bg {
+          background-color: var(--vemos-bg-error, #F56C6C);
+          color: var(--vemos-text-error, #fff);
         }
         
         .v-table--theme-info.v-table--background,
         .v-table--theme-info.v-table--bg {
-          background-color: #f4f4f5;
+          background-color: var(--vemos-bg-tertiary, #909399);
+          color: var(--vemos-text-tertiary, #fff);
+        }
+        
+        /* 为表格内容行也应用主题颜色 */
+        .v-table--theme-primary tbody tr {
+          background-color: transparent;
+        }
+        
+        /* 为表格内容行也应用主题颜色 - 使用淡色背景实现条纹效果 */
+        .v-table--theme-primary tbody tr:nth-child(even):not(.v-table__row--striped),
+        .v-table--theme-primary .v-table__row--striped {
+          background-color: var(--vemos-bg-primary, #ecf5ff);
+        }
+        
+        .v-table--theme-success tbody tr:nth-child(even):not(.v-table__row--striped),
+        .v-table--theme-success .v-table__row--striped {
+          background-color: var(--vemos-bg-success, #f0f9eb);
+        }
+        
+        .v-table--theme-warning tbody tr:nth-child(even):not(.v-table__row--striped),
+        .v-table--theme-warning .v-table__row--striped {
+          background-color: var(--vemos-bg-warning, #fdf6ec);
+        }
+        
+        .v-table--theme-error tbody tr:nth-child(even):not(.v-table__row--striped),
+        .v-table--theme-error .v-table__row--striped {
+          background-color: var(--vemos-bg-error, #fef0f0);
+        }
+        
+        .v-table--theme-info tbody tr:nth-child(even):not(.v-table__row--striped),
+        .v-table--theme-info .v-table__row--striped {
+          background-color: var(--vemos-bg-tertiary, #f4f4f5);
         }
       `
     });

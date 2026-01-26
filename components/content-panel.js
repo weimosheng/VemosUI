@@ -26,7 +26,7 @@ function registerContentPanelComponent() {
         
         const contentDiv = self.shadowRoot.querySelector('.v-content-panel__content');
         if (contentDiv) {
-          contentDiv.innerHTML = `<div style="color: #f56c6c; text-align: center; padding: 40px;">加载失败: ${error.message}</div>`;
+          contentDiv.innerHTML = `<div style="color: var(--vemos-text-error, #f56c6c); text-align: center; padding: 40px;">加载失败: ${error.message}</div>`;
         }
       }
     };
@@ -59,37 +59,69 @@ function registerContentPanelComponent() {
           display: flex;
           flex-direction: column;
           height: 100%;
-          background-color: #fafafa;
+          background-color: var(--vemos-bg-tertiary, #fafafa);
           overflow: hidden;
+          color: var(--vemos-text-default, #303133);
+        }
+        
+        /* 暗黑模式下内容面板的样式 */
+        [data-theme="dark"] .v-content-panel {
+          background-color: var(--vemos-bg-tertiary, #4a5568);
+          color: var(--vemos-text-default, #e2e8f0);
         }
         
         .v-content-panel__header {
           padding: 15px 20px;
-          border-bottom: 1px solid #e6e6e6;
-          background-color: #fff;
+          border-bottom: 1px solid var(--vemos-border-default, #e6e6e6);
+          background-color: var(--vemos-bg-default, #fff);
           flex-shrink: 0;
+        }
+        
+        /* 暗黑模式下头部的样式 */
+        [data-theme="dark"] .v-content-panel__header {
+          background-color: var(--vemos-bg-default, #2d3748);
+          border-color: var(--vemos-border-default, #4a5568);
         }
         
         .v-content-panel__body {
           flex: 1;
           padding: 20px;
           overflow-y: auto;
+          background-color: var(--vemos-bg-default, #fff);
+        }
+        
+        /* 暗黑模式下主体的样式 */
+        [data-theme="dark"] .v-content-panel__body {
+          background-color: var(--vemos-bg-default, #2d3748);
         }
         
         .v-content-panel__content {
-          background-color: #fff;
+          background-color: var(--vemos-bg-default, #fff);
           padding: 20px;
           border-radius: 4px;
+          color: var(--vemos-text-default, #303133);
+        }
+        
+        /* 暗黑模式下内容区的样式 */
+        [data-theme="dark"] .v-content-panel__content {
+          background-color: var(--vemos-bg-default, #2d3748);
+          color: var(--vemos-text-default, #e2e8f0);
         }
         
         .v-content-panel__footer {
           padding: 10px 20px;
-          border-top: 1px solid #e6e6e6;
-          background-color: #fff;
+          border-top: 1px solid var(--vemos-border-default, #e6e6e6);
+          background-color: var(--vemos-bg-default, #fff);
           text-align: center;
           font-size: 12px;
-          color: #909399;
-          flex-shrink: 0;
+          color: var(--vemos-text-tertiary, #909399);
+        }
+        
+        /* 暗黑模式下底部的样式 */
+        [data-theme="dark"] .v-content-panel__footer {
+          background-color: var(--vemos-bg-default, #2d3748);
+          border-color: var(--vemos-border-default, #4a5568);
+          color: var(--vemos-text-tertiary, #a0aec0);
         }
       `,
       async mounted() {

@@ -59,13 +59,19 @@ function registerSwitchComponent() {
           position: relative;
           width: 40px;
           height: 20px;
-          border: 1px solid #dcdfe6;
+          border: 1px solid var(--vemos-border-default, #dcdfe6);
           outline: none;
           border-radius: 10px;
           box-sizing: border-box;
           cursor: pointer;
           transition: border-color 0.3s, background-color 0.3s;
-          background-color: #dcdfe6;
+          background-color: var(--vemos-border-default, #dcdfe6);
+        }
+        
+        /* 暗黑模式下开关的样式 */
+        [data-theme="dark"] .v-switch__core {
+          border-color: var(--vemos-border-default, #4a5568);
+          background-color: var(--vemos-border-default, #4a5568);
         }
         
         .v-switch__core .v-switch__action {
@@ -75,18 +81,27 @@ function registerSwitchComponent() {
           border-radius: 100%;
           width: 18px;
           height: 18px;
-          background-color: #fff;
+          background-color: var(--vemos-bg-default, #fff);
           transform: translateX(2px);
           transition: transform 0.3s cubic-bezier(0.3, 1.0, 0.5, 1);
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 12px;
-          color: #fff;
+          color: var(--vemos-text-default, #303133);
+        }
+        
+        [data-theme="dark"] .v-switch__core .v-switch__action {
+          background-color: var(--vemos-bg-default, #2d3748);
+          color: var(--vemos-text-default, #e2e8f0);
         }
         
         .v-switch__wrapper.is-checked .v-switch__core {
-          background-color: #409eff;
+          background-color: var(--vemos-bg-primary, #409eff);
+        }
+        
+        [data-theme="dark"] .v-switch__wrapper.is-checked .v-switch__core {
+          background-color: var(--vemos-bg-primary, #63b3ed);
         }
         
         .v-switch__wrapper.is-checked .v-switch__action {
@@ -100,6 +115,10 @@ function registerSwitchComponent() {
         
         .v-switch__wrapper:hover .v-switch__core {
           box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.1);
+        }
+        
+        [data-theme="dark"] .v-switch__wrapper:hover .v-switch__core {
+          box-shadow: 0 0 0 2px rgba(99, 179, 237, 0.1);
         }
       `,
       mounted() {
