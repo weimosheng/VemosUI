@@ -1,0 +1,108 @@
+<h1>警告框 (v-alert)</h1>
+
+<p>v-alert 是一个警告框组件，用于向用户显示重要信息。它支持不同的类型（成功、警告、信息、错误），可以显示图标，也可以让用户关闭。</p>
+
+<h2>基本用法</h2>
+<div class="demo">
+  <v-card title="基本警告框">
+    <v-alert title="提示" description="这是一个基本的警告框"></v-alert>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="<v-alert title=&quot;提示&quot; description=&quot;这是一个基本的警告框&quot;></v-alert>">
+</v-code-display>
+
+<h2>不同类型的警告框</h2>
+<div class="demo">
+  <v-card title="警告框类型">
+    <v-alert type="success" title="成功" description="操作成功的提示信息" showIcon></v-alert>
+    <v-alert type="warning" title="警告" description="需要注意的提示信息" showIcon></v-alert>
+    <v-alert type="info" title="信息" description="一般信息的提示" showIcon></v-alert>
+    <v-alert type="error" title="错误" description="发生错误的提示信息" showIcon></v-alert>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="&lt;v-alert type=&quot;success&quot; title=&quot;成功&quot; description=&quot;操作成功的提示信息&quot; showIcon&gt;&lt;/v-alert&gt;
+&lt;v-alert type=&quot;warning&quot; title=&quot;警告&quot; description=&quot;需要注意的提示信息&quot; showIcon&gt;&lt;/v-alert&gt;
+&lt;v-alert type=&quot;info&quot; title=&quot;信息&quot; description=&quot;一般信息的提示&quot; showIcon&gt;&lt;/v-alert&gt;
+&lt;v-alert type=&quot;error&quot; title=&quot;错误&quot; description=&quot;发生错误的提示信息&quot; showIcon&gt;&lt;/v-alert&gt;">
+</v-code-display>
+
+<h2>可关闭的警告框</h2>
+<div class="demo">
+  <v-card title="带关闭按钮的警告框">
+    <v-alert type="success" title="可关闭" description="这个警告框可以关闭" closable showIcon></v-alert>
+    <v-alert type="warning" title="警告" description="这是一个可以关闭的警告信息" closable showIcon></v-alert>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="&lt;v-alert type=&quot;success&quot; title=&quot;可关闭&quot; description=&quot;这个警告框可以关闭&quot; closable showIcon&gt;&lt;/v-alert&gt;
+&lt;v-alert type=&quot;warning&quot; title=&quot;警告&quot; description=&quot;这是一个可以关闭的警告信息&quot; closable showIcon&gt;&lt;/v-alert&gt;">
+</v-code-display>
+
+<h2>居中显示的警告框</h2>
+<div class="demo">
+  <v-card title="居中样式">
+    <v-alert type="info" title="居中提示" description="这是一个居中显示的警告框" center showIcon></v-alert>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="&lt;v-alert type=&quot;info&quot; title=&quot;居中提示&quot; description=&quot;这是一个居中显示的警告框&quot; center showIcon&gt;&lt;/v-alert&gt;">
+</v-code-display>
+
+<h2>带自定义内容的警告框</h2>
+<div class="demo">
+  <v-card title="自定义内容">
+    <v-alert type="warning" title="注意事项" showIcon>
+      <div>这里可以放置更详细的说明内容</div>
+      <div>支持HTML标签和更多内容</div>
+    </v-alert>
+  </v-card>
+</div>
+
+<v-code-display 
+  lang="html"
+  show-line-numbers="true"
+  copyable="true"
+  code="&lt;v-alert type=&quot;warning&quot; title=&quot;注意事项&quot; showIcon&gt;
+  &lt;div&gt;这里可以放置更详细的说明内容&lt;/div&gt;
+  &lt;div&gt;支持HTML标签和更多内容&lt;/div&gt;
+&lt;/v-alert&gt;">
+</v-code-display>
+
+<h2>属性</h2>
+<v-table 
+  border="true"
+  stripe="true"
+  data='[
+    {"param": "type", "description": "警告框类型", "type": "String", "values": "success/warning/info/error", "default": "info"},
+    {"param": "closable", "description": "是否可关闭", "type": "Boolean", "values": "true/false", "default": "false"},
+    {"param": "showIcon", "description": "是否显示图标", "type": "Boolean", "values": "true/false", "default": "false"},
+    {"param": "title", "description": "警告框标题", "type": "String", "values": "-", "default": "''"},
+    {"param": "description", "description": "警告框描述", "type": "String", "values": "-", "default": "''"},
+    {"param": "center", "description": "是否居中布局", "type": "Boolean", "values": "true/false", "default": "false"}
+  ]'
+  columns='[
+    {"prop": "param", "title": "参数", "width": "150px"},
+    {"prop": "description", "title": "说明", "width": "250px"},
+    {"prop": "type", "title": "类型", "width": "150px"},
+    {"prop": "values", "title": "可选值", "width": "200px"},
+    {"prop": "default", "title": "默认值", "width": "150px"}
+  ]'
+></v-table>

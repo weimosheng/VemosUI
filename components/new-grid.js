@@ -5,7 +5,6 @@ vemos.registerComponent('v-grid', {
   props: ['columns', 'cols', 'gap', 'gutter', 'x-gap', 'y-gap', 'responsive', 'item-responsive'],
 
   template(props) {
-    const columns = parseInt(props.columns) || parseInt(props.cols) || 12;
     const gap = props.gap || props.gutter || '16px'; // 兼容gap和gutter属性名
     let horizontalGap = '16px';
     let verticalGap = '16px';
@@ -53,124 +52,64 @@ vemos.registerComponent('v-grid', {
       }
     }
     
-    // 解析响应式列数定义 (类似 Naive UI 的语法: "2 400:4 600:6")
-    const isResponsive = props.responsive === 'true' || props.responsive === '';
-    const isItemResponsive = props['item-responsive'] === 'true' || props['item-responsive'] === '';
-    
-    let responsiveStyle = '';
-    if (isResponsive) {
-      // 解析响应式定义
-      const responsiveCols = parseResponsiveCols(props.cols || props.columns || '12');
+    // 检查是否为响应式语法（包含冒号）
+    if(typeof props.cols === 'string' && props.cols.includes(':')) {
+      // 是响应式语法，解析并应用
+      const responsiveDefinition = parseCustomResponsiveDefinition(props.cols);
+      const responsiveStyle = generateCustomResponsiveStyle(responsiveDefinition);
       
-      // 使用解析后的响应式列数定义
-      const xsCols = responsiveCols.xs || 1;
-      const smCols = responsiveCols.sm || Math.min(2, responsiveCols.xs || 1);
-      const mdCols = responsiveCols.md || Math.min(3, responsiveCols.sm || 2);
-      const lgCols = responsiveCols.lg || Math.min(4, responsiveCols.md || 3);
-      const xlCols = responsiveCols.xl || responsiveCols.default || columns;
-      const xxlCols = responsiveCols.xxl || xlCols;
-      
-      responsiveStyle = `
-        @media (max-width: 575px) {
+      // 返回带有响应式样式的模板
+      return `
+        <style>
+          /* 网格容器样式 - 使用响应式语法解析出的默认列数 */
           .v-grid {
-            grid-template-columns: repeat(${xsCols}, 1fr);
+            display: grid;
+            grid-template-columns: repeat(${responsiveDefinition.default}, 1fr);
+            gap: ${verticalGap} ${horizontalGap};
+            width: 100%;
+            box-sizing: border-box;
           }
-        }
+          
+          ${responsiveStyle}
+          
+          /* 网格项基础样式 - 通过容器控制 */
+          .v-grid ::slotted(*) {
+            min-height: 50px;
+            box-sizing: border-box;
+          }
+        </style>
         
-        @media (min-width: 576px) and (max-width: 767px) {
-          .v-grid {
-            grid-template-columns: repeat(${smCols}, 1fr);
-          }
-        }
-        
-        @media (min-width: 768px) and (max-width: 991px) {
-          .v-grid {
-            grid-template-columns: repeat(${mdCols}, 1fr);
-          }
-        }
-        
-        @media (min-width: 992px) and (max-width: 1199px) {
-          .v-grid {
-            grid-template-columns: repeat(${lgCols}, 1fr);
-          }
-        }
-        
-        @media (min-width: 1200px) and (max-width: 1599px) {
-          .v-grid {
-            grid-template-columns: repeat(${xlCols}, 1fr);
-          }
-        }
-        
-        @media (min-width: 1600px) {
-          .v-grid {
-            grid-template-columns: repeat(${xxlCols}, 1fr);
-          }
-        }
+        <div class="v-grid">
+          <slot></slot>
+        </div>
       `;
     }
     
-    // 如果指定了响应式列数定义（如 "2 400:4 600:6"），则不管是否设置了 responsive 属性，都要应用响应式样式
-    if(typeof props.cols === 'string' && props.cols.match(/\d+\s*\d+:\d+/)) {
-      const responsiveCols = parseResponsiveCols(props.cols);
-      
-      const xsCols = responsiveCols.xs || 1;
-      const smCols = responsiveCols.sm || Math.min(2, responsiveCols.xs || 1);
-      const mdCols = responsiveCols.md || Math.min(3, responsiveCols.sm || 2);
-      const lgCols = responsiveCols.lg || Math.min(4, responsiveCols.md || 3);
-      const xlCols = responsiveCols.xl || responsiveCols.default || columns;
-      const xxlCols = responsiveCols.xxl || xlCols;
-      
-      responsiveStyle = `
-        @media (max-width: 575px) {
-          .v-grid {
-            grid-template-columns: repeat(${xsCols}, 1fr);
-          }
-        }
-        
-        @media (min-width: 576px) and (max-width: 767px) {
-          .v-grid {
-            grid-template-columns: repeat(${smCols}, 1fr);
-          }
-        }
-        
-        @media (min-width: 768px) and (max-width: 991px) {
-          .v-grid {
-            grid-template-columns: repeat(${mdCols}, 1fr);
-          }
-        }
-        
-        @media (min-width: 992px) and (max-width: 1199px) {
-          .v-grid {
-            grid-template-columns: repeat(${lgCols}, 1fr);
-          }
-        }
-        
-        @media (min-width: 1200px) and (max-width: 1599px) {
-          .v-grid {
-            grid-template-columns: repeat(${xlCols}, 1fr);
-          }
-        }
-        
-        @media (min-width: 1600px) {
-          .v-grid {
-            grid-template-columns: repeat(${xxlCols}, 1fr);
-          }
-        }
-      `;
+    // 非响应式情况，直接解析列数
+    let baseColumns = 6;  // 改为6作为默认值，避免总是显示12
+    if (props.cols !== undefined) {
+      const colsValue = parseInt(props.cols);
+      if (!isNaN(colsValue)) {
+        baseColumns = colsValue;
+      }
+    } else if (props.columns !== undefined) {
+      const columnsValue = parseInt(props.columns);
+      if (!isNaN(columnsValue)) {
+        baseColumns = columnsValue;
+      }
     }
-    
+
+    // 非响应式情况，使用普通列数
     return `
       <style>
         /* 网格容器样式 */
         .v-grid {
           display: grid;
-          grid-template-columns: repeat(${columns}, 1fr);
+          grid-template-columns: repeat(${baseColumns}, 1fr);
           gap: ${verticalGap} ${horizontalGap};
           width: 100%;
           box-sizing: border-box;
         }
-        
-        ${responsiveStyle}
         
         /* 网格项基础样式 - 通过容器控制 */
         .v-grid ::slotted(*) {
@@ -186,44 +125,73 @@ vemos.registerComponent('v-grid', {
   }
 });
 
-// 解析响应式列数定义 (类似 Naive UI 的语法: "2 400:4 600:6")
-function parseResponsiveCols(colsDef) {
-  const result = {};
-  
-  // 如果是简单的数字，则不是响应式定义
-  if (!isNaN(colsDef)) {
-    result.default = parseInt(colsDef);
-    return result;
+// 解析自定义响应式定义 (如 "4 400:2 600:1")
+function parseCustomResponsiveDefinition(colsDef) {
+  // 确保输入是字符串
+  if (typeof colsDef !== 'string') {
+    return { default: 6, breakpoints: [] };  // 改为6作为默认值
   }
   
-  // 解析响应式定义，如 "2 400:4 600:6"
-  const parts = colsDef.split(/\s+/);
+  const parts = colsDef.trim().split(/\s+/);
+  const breakpoints = [];
+  let defaultCols = null; // 改为null，稍后处理
   
   for (const part of parts) {
     if (part.includes(':')) {
-      // 这是一个断点定义，如 "400:4"
+      // 这是一个断点定义，如 "400:2"
       const [breakpoint, cols] = part.split(':');
       const bpNum = parseInt(breakpoint);
       const colsNum = parseInt(cols);
       
       if (!isNaN(bpNum) && !isNaN(colsNum)) {
-        if (bpNum < 576) result.xs = colsNum;
-        else if (bpNum >= 576 && bpNum < 768) result.sm = colsNum;
-        else if (bpNum >= 768 && bpNum < 992) result.md = colsNum;
-        else if (bpNum >= 992 && bpNum < 1200) result.lg = colsNum;
-        else if (bpNum >= 1200 && bpNum < 1600) result.xl = colsNum;
-        else if (bpNum >= 1600) result.xxl = colsNum;
+        breakpoints.push({ breakpoint: bpNum, cols: colsNum });
       }
     } else {
       // 这是默认列数
       const colsNum = parseInt(part);
       if (!isNaN(colsNum)) {
-        result.default = colsNum;
+        defaultCols = colsNum; // 设置为解析到的值
       }
     }
   }
   
-  return result;
+  // 如果没有找到默认列数，设置为6
+  if (defaultCols === null) {
+    defaultCols = 6;
+  }
+  
+  return {
+    default: defaultCols,
+    breakpoints: breakpoints
+  };
+}
+
+// 生成自定义响应式样式
+function generateCustomResponsiveStyle(definition) {
+  let style = '';
+  
+  // 默认样式（最大屏幕，也可能是最小屏幕，取决于断点设置）
+  style += `
+    .v-grid {
+      grid-template-columns: repeat(${definition.default}, 1fr) !important;
+    }
+  `;
+  
+  // 为每个断点生成媒体查询，按从小到大的顺序排列
+  // 使用 min-width，屏幕宽度大于等于断点时应用更大列数
+  const sortedBreakpoints = [...definition.breakpoints].sort((a, b) => a.breakpoint - b.breakpoint);
+  
+  for (const bp of sortedBreakpoints) {
+    style += `
+      @media (min-width: ${bp.breakpoint}px) {
+        .v-grid {
+          grid-template-columns: repeat(${bp.cols}, 1fr) !important;
+        }
+      }
+    `;
+  }
+  
+  return style;
 }
 
 // ==========================================

@@ -17,6 +17,7 @@
   <script src="./components/switch.js"></script>
   <script src="./components/grid.js"></script>
   <script src="./components/new-grid.js"></script>
+  <script src="./components/alert.js"></script>
   <style>
     * {
       margin: 0;
@@ -78,14 +79,15 @@
       <!-- 侧边栏 -->
       <v-sidebar 
         id="sidebar"
-        width="260px"
-        items='[{"text": "介绍", "icon": "🏠", "route": "docs/introduction.html"}, {"text": "基础组件", "icon": "⚙️", "expanded": true, "children": [{"text": "按钮 (v-button)", "icon": "🔘", "route": "docs/button.html"}, {"text": "卡片 (v-card)", "icon": "🃏", "route": "docs/card.html"}, {"text": "表格 (v-table)", "icon": "📊", "route": "docs/table.html"}, {"text": "代码展示 (v-code-display)", "icon": "💻", "route": "docs/code-display.html"}, {"text": "输入框 (v-input)", "icon": "✍️", "route": "docs/input.html"}, {"text": "开关 (v-switch)", "icon": "🔛", "route": "docs/switch.html"}, {"text": "栅格 (v-row)", "icon": "🔲", "route": "docs/grid.html"}, {"text": "新栅格 (v-grid)", "icon": "🔳", "route": "docs/grid-new.html"}, {"text": "图标 (Icons)", "icon": "⭐", "route": "docs/icons.html"}]}, {"text": "导航组件", "icon": "🧭", "children": [{"text": "导航栏 (v-navbar)", "icon": "🔽", "route": "docs/navbar.html"}, {"text": "侧边栏 (v-sidebar)", "icon": "📋", "route": "docs/sidebar.html"}]}, {"text": "主题系统", "icon": "🎨", "route": "docs/theme.html"}, {"text": "动画效果", "icon": "✨", "route": "docs/animations.html"}]'>
+        width="260px" 
+        collapsed="false"
+        toggleable="true"
+        items='[{"text": "介绍", "icon": "fa fa-home", "route": "docs/introduction.html"}, {"text": "基础组件", "icon": "fa fa-cube", "expanded": true, "children": [{"text": "按钮 (v-button)", "icon": "fa fa-square", "route": "docs/button.html"}, {"text": "卡片 (v-card)", "icon": "fa fa-id-card", "route": "docs/card.html"}, {"text": "表格 (v-table)", "icon": "fa fa-table", "route": "docs/table.html"}, {"text": "代码展示 (v-code-display)", "icon": "fa fa-code", "route": "docs/code-display.html"}, {"text": "输入框 (v-input)", "icon": "fa fa-i-cursor", "route": "docs/input.html"}, {"text": "开关 (v-switch)", "icon": "fa fa-toggle-on", "route": "docs/switch.html"}, {"text": "警告框 (v-alert)", "icon": "fa fa-exclamation-triangle", "route": "docs/alert.html"}, {"text": "栅格 (v-row)", "icon": "fa fa-th", "route": "docs/grid.html"}, {"text": "新栅格 (v-grid)", "icon": "fa fa-th-large", "route": "docs/grid-new.html"}, {"text": "图标 (Icons)", "icon": "fa fa-star", "route": "docs/icons.html"}]}, {"text": "导航组件", "icon": "fa fa-compass", "children": [{"text": "导航栏 (v-navbar)", "icon": "fa fa-bars", "route": "docs/navbar.html"}, {"text": "侧边栏 (v-sidebar)", "icon": "fa fa-list", "route": "docs/sidebar.html"}]}, {"text": "主题系统", "icon": "fa fa-palette", "route": "docs/theme.html"}, {"text": "动画效果", "icon": "fa fa-sparkles", "route": "docs/animations.html"}]'>
         <div slot="header">
           <h3 style="margin: 0; padding: 1.5px; text-align: center;">VemosUI</h3>
         </div>
-        <div slot="footer">
-          &copy; 2026 VemosUI
-        </div>
+        <div slot="footer" style="width: 100%;">
+    </div>
       </v-sidebar>
       
       <!-- 内容面板 -->
